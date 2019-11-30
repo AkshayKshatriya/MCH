@@ -25,7 +25,7 @@ class DailyStatusCell: UICollectionViewCell {
     }
     
     override func draw(_ rect: CGRect) {
-        statusView.roundCorners()
+        statusView.roundCorners(radius: 10.0)
     }
 
 }

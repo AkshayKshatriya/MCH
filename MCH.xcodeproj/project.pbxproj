@@ -18,6 +18,8 @@
 		2326777C238417510099771A /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2326777B238417510099771A /* HomeScreenViewController.swift */; };
 		234F47A8239230D500F94DCD /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F47A6239230D500F94DCD /* ScheduleCell.swift */; };
 		234F47A9239230D500F94DCD /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234F47A7239230D500F94DCD /* ScheduleCell.xib */; };
+		234F47AC23924D1D00F94DCD /* ScheduleActivityViewl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F47AB23924D1D00F94DCD /* ScheduleActivityViewl.swift */; };
+		234F47AE23924E1000F94DCD /* ScheduleActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234F47AD23924E1000F94DCD /* ScheduleActivityView.xib */; };
 		23D43A1D238BA7D6000AF966 /* SignupMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A1C238BA7D6000AF966 /* SignupMessageController.swift */; };
 		23D43A1F238BA855000AF966 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A1E238BA855000AF966 /* ChatViewController.swift */; };
 		23D43A22238BAAB5000AF966 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A21238BAAB5000AF966 /* BasicAudioController.swift */; };
@@ -68,6 +70,8 @@
 		2326777B238417510099771A /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		234F47A6239230D500F94DCD /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		234F47A7239230D500F94DCD /* ScheduleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
+		234F47AB23924D1D00F94DCD /* ScheduleActivityViewl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleActivityViewl.swift; sourceTree = "<group>"; };
+		234F47AD23924E1000F94DCD /* ScheduleActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleActivityView.xib; sourceTree = "<group>"; };
 		23D43A1C238BA7D6000AF966 /* SignupMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupMessageController.swift; sourceTree = "<group>"; };
 		23D43A1E238BA855000AF966 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		23D43A21238BAAB5000AF966 /* BasicAudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
@@ -159,6 +163,15 @@
 			path = HomeScreenCells;
 			sourceTree = "<group>";
 		};
+		234F47AA23924CB600F94DCD /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				234F47AB23924D1D00F94DCD /* ScheduleActivityViewl.swift */,
+				234F47AD23924E1000F94DCD /* ScheduleActivityView.xib */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		23D43A20238BAAB5000AF966 /* AudioController */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +227,7 @@
 		23EC79462382C27B00EEE454 /* MCH */ = {
 			isa = PBXGroup;
 			children = (
+				234F47AA23924CB600F94DCD /* CustomView */,
 				23EC79532382C27C00EEE454 /* Info.plist */,
 				23005F46238AD71A0075F28C /* AngelView.swift */,
 				23EC79472382C27B00EEE454 /* AppDelegate.swift */,
@@ -387,6 +401,7 @@
 				23EC794F2382C27C00EEE454 /* Assets.xcassets in Resources */,
 				23EC79762382C39200EEE454 /* Podfile in Resources */,
 				23EC794D2382C27B00EEE454 /* Main.storyboard in Resources */,
+				234F47AE23924E1000F94DCD /* ScheduleActivityView.xib in Resources */,
 				23005F45238AB1270075F28C /* DailyStatusCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,6 +545,7 @@
 				23D43A1D238BA7D6000AF966 /* SignupMessageController.swift in Sources */,
 				23D43A27238BB284000AF966 /* ChatUser.swift in Sources */,
 				23005F41238A621F0075F28C /* UIColor+AppTheme.swift in Sources */,
+				234F47AC23924D1D00F94DCD /* ScheduleActivityViewl.swift in Sources */,
 				23005F3A238972060075F28C /* LoginViewController.swift in Sources */,
 				23EC79482382C27B00EEE454 /* AppDelegate.swift in Sources */,
 				23D43A1F238BA855000AF966 /* ChatViewController.swift in Sources */,

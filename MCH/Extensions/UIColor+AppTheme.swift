@@ -16,4 +16,9 @@ extension UIColor {
     internal class var WhiteSelected : UIColor {
         return UIColor(named: "whiteSelected")!
     }
+    internal class var WhiteSelected2 : UIColor {
+        return UIColor(named: "whiteSelected2")!
+    }
+
+    
 }

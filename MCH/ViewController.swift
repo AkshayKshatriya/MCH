@@ -29,10 +29,17 @@ class ViewController: UIViewController {
     let btnFont : CGFloat = 15.0
     let FooterFont : CGFloat = 12.0
 
+    var screenWidth : CGFloat?
+    var screenHeight : CGFloat?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.view.addSubview(mchNavigationBar)
+        
+        screenWidth = self.view.frame.size.width
+        screenWidth = self.view.frame.size.height
+        
         mchNavigationBar.translatesAutoresizingMaskIntoConstraints = false
         let horizontalConstraint = NSLayoutConstraint(item: mchNavigationBar, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
         let verticalConstraint = NSLayoutConstraint(item: mchNavigationBar, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)

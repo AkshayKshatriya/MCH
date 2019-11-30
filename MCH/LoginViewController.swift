@@ -21,8 +21,6 @@ class LoginViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mchNavigationBar.isHidden = true
-        loginBtn.roundCorners()
-        loginCoverview.roundCorners(radius: 10.0)
         loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: UIView.fontHeight(height: btnFont))
         AppNameLabel?.font = UIFont.systemFont(ofSize: UIView.fontHeight(height: titlefont))
 
@@ -38,6 +36,10 @@ class LoginViewController: ViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    override func viewDidLayoutSubviews() {
+        loginBtn.roundCorners()
+        loginCoverview.roundCorners(radius: 10.0)
+    }
 
     
     // MARK: - Navigation

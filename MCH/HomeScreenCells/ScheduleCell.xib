@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ScheduleCell" customModule="MCH" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ScheduleCell" id="gTV-IL-0wX" customClass="ScheduleCell" customModule="MCH" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -19,7 +19,44 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQ2-It-8wD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Schedule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyw-TL-M8K">
+                                <rect key="frame" x="30" y="20" width="110.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ezi-86-o1u">
+                                <rect key="frame" x="30" y="61" width="354" height="114"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFi-Z0-rgh">
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="114"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="500" id="s8Z-BZ-qYM"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="JFi-Z0-rgh" secondAttribute="bottom" id="X6e-wI-RoJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="JFi-Z0-rgh" secondAttribute="trailing" id="Zgd-fB-e2i"/>
+                                    <constraint firstItem="JFi-Z0-rgh" firstAttribute="top" secondItem="Ezi-86-o1u" secondAttribute="top" id="hOi-3b-Xhm"/>
+                                    <constraint firstItem="JFi-Z0-rgh" firstAttribute="centerY" secondItem="Ezi-86-o1u" secondAttribute="centerY" id="kF2-96-Zsb"/>
+                                    <constraint firstItem="JFi-Z0-rgh" firstAttribute="leading" secondItem="Ezi-86-o1u" secondAttribute="leading" id="sTl-2L-xYg"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="iba-KN-ohX"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="PCm-TT-Uiz"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Jyw-TL-M8K" firstAttribute="top" secondItem="dQ2-It-8wD" secondAttribute="top" constant="20" id="8pd-F3-HGg"/>
+                            <constraint firstAttribute="trailing" secondItem="Ezi-86-o1u" secondAttribute="trailing" constant="30" id="PoG-oY-q0v"/>
+                            <constraint firstAttribute="bottom" secondItem="Ezi-86-o1u" secondAttribute="bottom" constant="25" id="TeO-6e-b3h"/>
+                            <constraint firstItem="Ezi-86-o1u" firstAttribute="top" secondItem="Jyw-TL-M8K" secondAttribute="bottom" constant="20" id="YG5-Zy-765"/>
+                            <constraint firstItem="Ezi-86-o1u" firstAttribute="leading" secondItem="dQ2-It-8wD" secondAttribute="leading" constant="30" id="dKn-uO-6Oa"/>
+                            <constraint firstItem="Jyw-TL-M8K" firstAttribute="leading" secondItem="dQ2-It-8wD" secondAttribute="leading" constant="30" id="xyx-2G-TqW"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>
@@ -31,7 +68,11 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="contentViewWidth" destination="s8Z-BZ-qYM" id="5JI-NM-IY9"/>
+                <outlet property="contentview" destination="JFi-Z0-rgh" id="8c0-4m-o8U"/>
                 <outlet property="scheduleView" destination="dQ2-It-8wD" id="UKB-cx-l9r"/>
+                <outlet property="scrollView" destination="Ezi-86-o1u" id="wZd-u8-IeQ"/>
+                <outlet property="titleLabel" destination="Jyw-TL-M8K" id="J8T-aG-Db7"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="89.732142857142847"/>
         </collectionViewCell>
