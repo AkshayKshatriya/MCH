@@ -1,0 +1,45 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AlamofireImage (3.6.0):
+    - Alamofire (~> 4.9)
+  - DeviceKit (2.3.0)
+  - FontAwesome.swift (1.8.2)
+  - InputBarAccessoryView (4.2.2)
+  - MessageKit (3.0.0):
+    - InputBarAccessoryView (~> 4.2.2)
+  - SideMenu (5.0.3)
+  - SteviaLayout (4.7.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
+  - DeviceKit (~> 2.0)
+  - FontAwesome.swift
+  - MessageKit
+  - SideMenu (~> 5.0)
+  - SteviaLayout (~> 4.7)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireImage
+    - DeviceKit
+    - FontAwesome.swift
+    - InputBarAccessoryView
+    - MessageKit
+    - SideMenu
+    - SteviaLayout
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
+  DeviceKit: da103891aa928d89f64ea8dd8aca738c5f3d8ac0
+  FontAwesome.swift: 7938d6a03113ff3f39001bde7f50be8a0903d605
+  InputBarAccessoryView: 2b937602598e2fab3149f37f51dd7ad795653812
+  MessageKit: e892a9ca49ebe6d82684d3a93ad84021fa23e2c6
+  SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
+  SteviaLayout: 4db9fc4f8c1f7c45b578c300aaf6def90260ad3e
+
+PODFILE CHECKSUM: 0afa2f65001451e6995c76f0cf6874fb45d4f0c5
+
+COCOAPODS: 1.8.4
