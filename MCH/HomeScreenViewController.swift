@@ -20,6 +20,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
         mchNavigationBar.loadUI(type: .Home, title: "Good Morning", subtitle: "Linda")
         homeCollectionView.register(UINib.init(nibName: "DailyStatusCell", bundle: .main), forCellWithReuseIdentifier: "DailyStatusCell")
         homeCollectionView.register(UINib.init(nibName: "ScheduleCell", bundle: .main), forCellWithReuseIdentifier: "ScheduleCell")
+        homeCollectionView.register(UINib.init(nibName: "TaskListHeader", bundle: .main), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "TaskListHeader")
         homeCollectionView.dragInteractionEnabled = true
         homeCollectionView.dataSource = self
         homeCollectionView.delegate = self
@@ -27,14 +28,14 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-      if keyPath == "contentSize" && ((object as? UICollectionView) != nil) {
-        if let collectionView = (object as? UICollectionView){
-            print(collectionView.contentSize)
+        if keyPath == "contentSize" && ((object as? UICollectionView) != nil) {
+            if let collectionView = (object as? UICollectionView){
+                print(collectionView.contentSize)
+            }
+            print("updated")
         }
-        print("updated")
-      }
     }
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -47,12 +48,12 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     
     //horizontal space between cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
+        return 8
     }
     
     //vertical space between cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
+        return 5
     }
     
     
@@ -95,12 +96,36 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
                 else {
                     preconditionFailure("Invalid cell type")
             }
-
             return scheduleCell
             
         default:
             return UICollectionViewCell.init()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 1 {
+            return CGSize(width: collectionView.frame.width, height:50.0)
+        }
+        else
+        {
+            return CGSize(width: 0, height: 0)
+            
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var headerView : TaskListHeader?
+        if indexPath.section == 1 {
+            headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "TaskListHeader", for: indexPath) as? TaskListHeader
+            headerView?.titleArray = ["Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"]
+            headerView?.isHidden = false
+        }
+        else
+        {
+            headerView?.isHidden = true
+        }
+        return headerView!
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

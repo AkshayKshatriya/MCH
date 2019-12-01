@@ -15,8 +15,8 @@ class LoginViewController: ViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var AppNameLabel: UILabel!
     @IBOutlet weak var loginLabel: UILabel!
-    @IBOutlet weak var signupLabel: UILabel!
     @IBOutlet weak var termsLabel: UILabel!
+    @IBOutlet weak var signuoBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class LoginViewController: ViewController {
 
         loginLabel?.font = UIFont.systemFont(ofSize: UIView.fontHeight(height: subtitleFont))
 
-        signupLabel?.font = UIFont.systemFont(ofSize: UIView.fontHeight(height: subtitleFont))
+        signuoBtn?.titleLabel?.font = UIFont.systemFont(ofSize: UIView.fontHeight(height: subtitleFont))
 
         termsLabel?.font = UIFont.systemFont(ofSize: UIView.fontHeight(height: FooterFont))
 

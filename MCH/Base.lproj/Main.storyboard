@@ -146,31 +146,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="159"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fx-Gx-mBJ">
-                                <rect key="frame" x="176.5" y="691" width="61" height="21.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAp-eR-n5t">
                                 <rect key="frame" x="170.5" y="871.5" width="73.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnI-Nr-sUN">
+                                <rect key="frame" x="178" y="691" width="58" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="oCB-0P-bya" kind="push" id="DLs-7g-1aX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="primaryColor"/>
                         <constraints>
                             <constraint firstItem="PIn-3i-aFa" firstAttribute="trailing" secondItem="o3S-sa-ioW" secondAttribute="trailing" id="17R-tY-eVw"/>
-                            <constraint firstItem="2fx-Gx-mBJ" firstAttribute="top" secondItem="o3S-sa-ioW" secondAttribute="bottom" multiplier="1.05" id="9g1-tg-0dA"/>
                             <constraint firstItem="qAp-eR-n5t" firstAttribute="centerY" secondItem="PIn-3i-aFa" secondAttribute="centerY" multiplier="1.85" id="Art-vt-hw7"/>
                             <constraint firstItem="o3S-sa-ioW" firstAttribute="height" secondItem="PIn-3i-aFa" secondAttribute="height" multiplier="0.85" id="ND0-RQ-5Sa"/>
-                            <constraint firstItem="2fx-Gx-mBJ" firstAttribute="centerX" secondItem="nRb-wN-ecl" secondAttribute="centerX" id="NIp-Ib-1C4"/>
                             <constraint firstItem="o3S-sa-ioW" firstAttribute="top" secondItem="nRb-wN-ecl" secondAttribute="top" id="PIl-ko-z7a"/>
                             <constraint firstItem="osj-l7-CrY" firstAttribute="leading" secondItem="PIn-3i-aFa" secondAttribute="leading" id="Qa1-4e-p4R"/>
                             <constraint firstItem="o3S-sa-ioW" firstAttribute="leading" secondItem="PIn-3i-aFa" secondAttribute="leading" id="QoW-SH-y1Z"/>
+                            <constraint firstItem="rnI-Nr-sUN" firstAttribute="top" secondItem="o3S-sa-ioW" secondAttribute="bottom" multiplier="1.05" id="RuV-rA-rXO"/>
                             <constraint firstItem="ewu-A9-RWv" firstAttribute="width" secondItem="PIn-3i-aFa" secondAttribute="width" multiplier="0.3" id="Ssl-ib-lOJ"/>
                             <constraint firstItem="PIn-3i-aFa" firstAttribute="trailing" secondItem="osj-l7-CrY" secondAttribute="trailing" id="VNv-Ox-vuk"/>
+                            <constraint firstItem="rnI-Nr-sUN" firstAttribute="centerX" secondItem="nRb-wN-ecl" secondAttribute="centerX" id="a6U-bB-qu4"/>
                             <constraint firstItem="osj-l7-CrY" firstAttribute="top" secondItem="nRb-wN-ecl" secondAttribute="top" id="i6K-p8-fkR"/>
                             <constraint firstItem="bzR-QO-j7g" firstAttribute="top" secondItem="osj-l7-CrY" secondAttribute="bottom" constant="20" id="ka2-RU-gKU"/>
                             <constraint firstItem="qAp-eR-n5t" firstAttribute="centerX" secondItem="nRb-wN-ecl" secondAttribute="centerX" id="z98-o2-wqK"/>
@@ -183,7 +187,7 @@
                         <outlet property="loginBtn" destination="ewu-A9-RWv" id="Nra-rz-t2v"/>
                         <outlet property="loginCoverview" destination="o3S-sa-ioW" id="IkW-is-rzr"/>
                         <outlet property="loginLabel" destination="ePK-A5-zqG" id="26b-Ur-2Ja"/>
-                        <outlet property="signupLabel" destination="2fx-Gx-mBJ" id="Poa-QL-rUO"/>
+                        <outlet property="signuoBtn" destination="rnI-Nr-sUN" id="HBX-Y1-hPn"/>
                         <outlet property="termsLabel" destination="qAp-eR-n5t" id="JoD-Mv-yVj"/>
                     </connections>
                 </viewController>
@@ -202,6 +206,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="t0b-V6-ZAb"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dIh-zT-KBl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xjW-B1-ht5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

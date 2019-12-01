@@ -26,6 +26,8 @@
 		23D43A25238BB227000AF966 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A24238BB227000AF966 /* ChatMessage.swift */; };
 		23D43A27238BB284000AF966 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A26238BB284000AF966 /* ChatUser.swift */; };
 		23D43A2A238BC28F000AF966 /* SignupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A29238BC28F000AF966 /* SignupModel.swift */; };
+		23E0426D2392B05B004EB7C1 /* TaskListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0426B2392B05B004EB7C1 /* TaskListHeader.swift */; };
+		23E0426E2392B05B004EB7C1 /* TaskListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23E0426C2392B05B004EB7C1 /* TaskListHeader.xib */; };
 		23EC79482382C27B00EEE454 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EC79472382C27B00EEE454 /* AppDelegate.swift */; };
 		23EC794A2382C27B00EEE454 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EC79492382C27B00EEE454 /* ViewController.swift */; };
 		23EC794D2382C27B00EEE454 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EC794B2382C27B00EEE454 /* Main.storyboard */; };
@@ -78,6 +80,8 @@
 		23D43A24238BB227000AF966 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		23D43A26238BB284000AF966 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		23D43A29238BC28F000AF966 /* SignupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupModel.swift; sourceTree = "<group>"; };
+		23E0426B2392B05B004EB7C1 /* TaskListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListHeader.swift; sourceTree = "<group>"; };
+		23E0426C2392B05B004EB7C1 /* TaskListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListHeader.xib; sourceTree = "<group>"; };
 		23EC79442382C27B00EEE454 /* MCH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EC79472382C27B00EEE454 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23EC79492382C27B00EEE454 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				23005F43238AB1270075F28C /* DailyStatusCell.xib */,
 				234F47A6239230D500F94DCD /* ScheduleCell.swift */,
 				234F47A7239230D500F94DCD /* ScheduleCell.xib */,
+				23E0426B2392B05B004EB7C1 /* TaskListHeader.swift */,
+				23E0426C2392B05B004EB7C1 /* TaskListHeader.xib */,
 			);
 			path = HomeScreenCells;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23E0426E2392B05B004EB7C1 /* TaskListHeader.xib in Resources */,
 				234F47A9239230D500F94DCD /* ScheduleCell.xib in Resources */,
 				23EC79782382C4C100EEE454 /* MCHNavigationBar.xib in Resources */,
 				23EC79522382C27C00EEE454 /* LaunchScreen.storyboard in Resources */,
@@ -549,6 +556,7 @@
 				23005F3A238972060075F28C /* LoginViewController.swift in Sources */,
 				23EC79482382C27B00EEE454 /* AppDelegate.swift in Sources */,
 				23D43A1F238BA855000AF966 /* ChatViewController.swift in Sources */,
+				23E0426D2392B05B004EB7C1 /* TaskListHeader.swift in Sources */,
 				23005F44238AB1270075F28C /* DailyStatusCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
