@@ -12,10 +12,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchPopUp" customModule="MCH" customModuleProvider="target">
             <connections>
                 <outlet property="cancelButton" destination="1Ql-pK-Zpr" id="8QV-Tr-Wyr"/>
-                <outlet property="contentView" destination="iN0-l3-epB" id="Hyl-i6-QYc"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="nYS-iD-Wzm"/>
                 <outlet property="contentViewHeight" destination="t0o-6q-B1w" id="lzP-em-t5V"/>
                 <outlet property="doneButton" destination="Aus-6O-ptc" id="fuD-1T-IUj"/>
                 <outlet property="optionTableView" destination="pEm-gG-GEE" id="qMf-dt-Tgi"/>
+                <outlet property="scrollViewContentView" destination="Csc-Zd-Es7" id="89v-dB-jCa"/>
                 <outlet property="searchBar" destination="JHl-sa-ENu" id="Nxm-yM-9Ah"/>
                 <outlet property="selectedOptionScrollView" destination="Cdk-rf-DQd" id="4IQ-Ki-zMs"/>
                 <outlet property="selectedOptionScrollViewHeight" destination="TOr-eZ-3Kz" id="uTg-Sr-vkM"/>
@@ -32,19 +33,19 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cdk-rf-DQd">
-                    <rect key="frame" x="20" y="160.5" width="374" height="0.0"/>
+                    <rect key="frame" x="20" y="160.5" width="374" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Csc-Zd-Es7">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="300"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="100" id="t0o-6q-B1w"/>
+                                <constraint firstAttribute="height" constant="300" id="t0o-6q-B1w"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
                         <constraint firstItem="Csc-Zd-Es7" firstAttribute="centerX" secondItem="Cdk-rf-DQd" secondAttribute="centerX" id="6nl-DR-4SE"/>
-                        <constraint firstAttribute="height" id="TOr-eZ-3Kz"/>
+                        <constraint firstAttribute="height" constant="100" id="TOr-eZ-3Kz"/>
                         <constraint firstItem="Csc-Zd-Es7" firstAttribute="top" secondItem="Cdk-rf-DQd" secondAttribute="top" id="d21-1q-F6Z"/>
                         <constraint firstAttribute="bottom" secondItem="Csc-Zd-Es7" secondAttribute="bottom" id="f8I-Vd-kKN"/>
                         <constraint firstAttribute="trailing" secondItem="Csc-Zd-Es7" secondAttribute="trailing" id="gAN-Pv-VCw"/>
@@ -54,7 +55,7 @@
                     <viewLayoutGuide key="frameLayoutGuide" id="1MA-Ly-GFh"/>
                 </scrollView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pEm-gG-GEE">
-                    <rect key="frame" x="20" y="170.5" width="374" height="259.5"/>
+                    <rect key="frame" x="20" y="270.5" width="374" height="159.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BUi-If-icf">

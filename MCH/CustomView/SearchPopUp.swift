@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-struct DiseaseOption {
+struct ElementOption {
     var id : String?
     var name : String?
 }
@@ -25,7 +25,10 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
     @IBOutlet weak var optionTableView: UITableView!
     @IBOutlet weak var doneButton: MCHButton!
     @IBOutlet weak var cancelButton: MCHButton!
-    var diseaseArray = [DiseaseOption]()
+    @IBOutlet weak var scrollViewContentView: UIView!
+    
+    var prevFrame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+    var elementArray = [ElementOption]()
     var cellIdentifier = "optionsCell"
     var cancelClicked : (()->())?
     var selectedOptionArray : [String]?
@@ -66,7 +69,7 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.diseaseArray.removeAll()
+        self.elementArray.removeAll()
         self.optionTableView.reloadData()
     }
     
@@ -84,13 +87,14 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
                         case .success:
                             do
                             {
-                                self.diseaseArray.removeAll()
+                                self.elementArray.removeAll()
                                 let json = try JSON(data: response.data!)
                                 for i in 0 ..< json.arrayValue[3].count {
                                     if let name = json.arrayValue[3].arrayValue[i].arrayValue[1].string{
                                         let id = json.arrayValue[3].arrayValue[i].arrayValue[0].string ?? "\(i)"
-                                        let diseaseOption = DiseaseOption.init(id:id , name: name)
-                                        self.diseaseArray.append(diseaseOption)
+                                        let elementOption = ElementOption.init(id:id , name: name)
+                                        self.elementArray.append(elementOption)
+                                        self.selectedOptionArray = [String]()
                                     }
                                 }
                             }
@@ -99,7 +103,7 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
                                 print(error)
                                 //////////////////////////////////////////////////////////////////////
                             }
-                            debugPrint(self.diseaseArray)
+                            debugPrint(self.elementArray)
                             self.optionTableView.reloadData()
                         case .failure(_):
                             debugPrint(response)
@@ -114,7 +118,7 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
         guard  let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? optionsCell else {
             return UITableViewCell.init()
         }
-        if let name = diseaseArray[indexPath.row].name  {
+        if let name = elementArray[indexPath.row].name  {
             cell.optionLabel.text = name
         }
         cell.selectionStyle = .none
@@ -122,18 +126,76 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return diseaseArray.count
+        return elementArray.count
+    }
+    
+    func addRemoveSelectedElement(cell : optionsCell, indexPath: IndexPath)  {
+        if cell.checkBoxValue {
+            cell.checkBoxValue = false
+            guard let element = elementArray[indexPath.row].name else {
+                return
+            }
+            selectedOptionArray?.removeAll(where: { (value) -> Bool in
+                if value == element{
+                    return true
+                }
+                else
+                {
+                    return false
+                }
+            })
+            debugPrint(selectedOptionArray ?? [])
+        }
+        else
+        {
+            cell.checkBoxValue = true
+            guard let element = elementArray[indexPath.row].name else {
+                return
+            }
+            selectedOptionArray?.append(element)
+            debugPrint(selectedOptionArray ?? [])
+        }
+        prevFrame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+        setSelectedElementOnScrollView()
+    }
+    
+    func setSelectedElementOnScrollView() {
+        let scrollviewWidth = self.selectedOptionScrollView.frame.width
+        for subview in self.scrollViewContentView.subviews {
+            if let label = (subview as? UILabel){
+                label.removeFromSuperview()
+            }
+        }
+
+        for selectedOption in selectedOptionArray ?? [] {
+            let selectedElementLabel = UILabel.init()
+            selectedElementLabel.text = selectedOption
+            selectedElementLabel.textColor = .black
+            selectedElementLabel.numberOfLines = 0
+            let maximumLabelSize: CGSize = CGSize(width: (scrollviewWidth - 40), height: 9999)
+            let expectedLabelSize: CGSize = selectedElementLabel.sizeThatFits(maximumLabelSize)
+            // create a frame that is filled with the UILabel frame data
+            var newFrame: CGRect = selectedElementLabel.frame
+            // resizing the frame to calculated size
+            newFrame.size = expectedLabelSize
+            // put calculated frame into UILabel frame
+            if (scrollviewWidth - prevFrame.maxX) > (newFrame.width + 20) {
+                newFrame.origin = CGPoint.init(x: (prevFrame.maxX + 10), y: prevFrame.minY)
+            }
+            else
+            {
+                newFrame.origin = CGPoint.init(x: (newFrame.origin.x + 10), y: (prevFrame.maxY + 10))
+            }
+            prevFrame = newFrame
+            selectedElementLabel.frame = newFrame
+            selectedElementLabel.backgroundColor = .red
+            scrollViewContentView.addSubview(selectedElementLabel)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = ( tableView.cellForRow(at: indexPath) as? optionsCell ) {
-            if cell.checkBoxValue {
-                cell.checkBoxValue = false
-            }
-            else
-            {
-                cell.checkBoxValue = true
-            }
+            self.addRemoveSelectedElement(cell: cell, indexPath: indexPath)
         }
     }
     
@@ -141,7 +203,7 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
         self.searchBar.delegate = nil
         self.optionTableView.dataSource = nil
         self.optionTableView.delegate = nil
-        self.diseaseArray.removeAll()
+        self.elementArray.removeAll()
     }
     
     @IBAction func doneAction(_ sender: Any) {
