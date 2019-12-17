@@ -169,15 +169,23 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
 
         for selectedOption in selectedOptionArray ?? [] {
             let selectedElementLabel = UILabel.init()
-            selectedElementLabel.text = selectedOption
-            selectedElementLabel.textColor = .black
+            let str: AttrString = """
+            \(selectedOption, .color(.white), .font(.systemFont(ofSize: 13, weight: .light)))\t\("x",.color(UIColor.white), .font(UIFont.systemFont(ofSize: UIView.fontHeight(height: 13), weight: .medium)))
+            """
+            selectedElementLabel.font = UIFont.systemFont(ofSize: 13.0, weight: .light)
+            selectedElementLabel.attributedText = str.attributedString
+            selectedElementLabel.textColor = .white
+            selectedElementLabel.backgroundColor = .Appcolor
+            selectedElementLabel.textAlignment = .center
             selectedElementLabel.numberOfLines = 0
+            selectedElementLabel.layer.cornerRadius = 5
+            selectedElementLabel.clipsToBounds = true
             let maximumLabelSize: CGSize = CGSize(width: (scrollviewWidth - 40), height: 9999)
             let expectedLabelSize: CGSize = selectedElementLabel.sizeThatFits(maximumLabelSize)
             // create a frame that is filled with the UILabel frame data
             var newFrame: CGRect = selectedElementLabel.frame
             // resizing the frame to calculated size
-            newFrame.size = expectedLabelSize
+            newFrame.size = CGSize.init(width: (expectedLabelSize.width + 20), height: (expectedLabelSize.height + 15))
             // put calculated frame into UILabel frame
             if (scrollviewWidth - prevFrame.maxX) > (newFrame.width + 20) {
                 newFrame.origin = CGPoint.init(x: (prevFrame.maxX + 10), y: prevFrame.minY)
@@ -188,7 +196,6 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
             }
             prevFrame = newFrame
             selectedElementLabel.frame = newFrame
-            selectedElementLabel.backgroundColor = .red
             scrollViewContentView.addSubview(selectedElementLabel)
         }
     }
