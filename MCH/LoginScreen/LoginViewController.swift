@@ -36,6 +36,7 @@ class LoginViewController: ViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    
     override func viewDidLayoutSubviews() {
         loginBtn.roundCorners()
         loginCoverview.roundCorners(radius: 10.0)

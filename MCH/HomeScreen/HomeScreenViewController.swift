@@ -18,6 +18,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         mchNavigationBar.loadUI(type: .Home, title: "Good Morning", subtitle: "Linda")
+        homeCollectionView.register(UINib.init(nibName: "EmptyCell", bundle: .main), forCellWithReuseIdentifier: "EmptyCell")
         homeCollectionView.register(UINib.init(nibName: "DailyStatusCell", bundle: .main), forCellWithReuseIdentifier: "DailyStatusCell")
         homeCollectionView.register(UINib.init(nibName: "ScheduleCell", bundle: .main), forCellWithReuseIdentifier: "ScheduleCell")
         homeCollectionView.register(UINib.init(nibName: "TaskListHeader", bundle: .main), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "TaskListHeader")
@@ -53,7 +54,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     
     //vertical space between cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 10
     }
     
     
@@ -64,7 +65,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
             let cellSize = CGSize.init(width: (self.view.frame.width), height: (self.view.frame.width * 0.23))
             return cellSize
             
-        case 1:
+        case 2:
             let cellSize = CGSize.init(width: (self.view.frame.width), height: (self.view.frame.width * 0.44))
             return cellSize
             
@@ -74,7 +75,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
@@ -91,7 +92,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
                     preconditionFailure("Invalid cell type")
             }
             return dailyStatusCell
-        case 1:
+        case 2:
             guard let scheduleCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScheduleCell", for: indexPath) as? ScheduleCell
                 else {
                     preconditionFailure("Invalid cell type")
@@ -99,13 +100,17 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
             return scheduleCell
             
         default:
-            return UICollectionViewCell.init()
+            guard let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCell", for: indexPath) as? EmptyCell
+                else {
+                    preconditionFailure("Invalid cell type")
+            }
+            return emptyCell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 1 {
-            return CGSize(width: collectionView.frame.width, height:50.0)
+            return CGSize(width: collectionView.frame.width, height:60.0)
         }
         else
         {

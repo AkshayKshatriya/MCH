@@ -20,6 +20,8 @@ class MCHNavigationBar: UIView {
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var menuBtn: UIButton!
     
+    var navigationController : UINavigationController?
+    
     var titleString:AttrString?{
         didSet{
             titleLabel.attributedText = self.titleString?.attributedString
@@ -67,6 +69,11 @@ class MCHNavigationBar: UIView {
         
     
     }
+    
+    @IBAction func menuBtnAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     /*
      // Only override draw() if you perform custom drawing.

@@ -34,7 +34,6 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureMessageCollectionView()
         configureMessageInputBar()
         loadFirstMessages()

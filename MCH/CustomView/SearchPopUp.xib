@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchPopUp" customModule="MCH" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="1Ql-pK-Zpr" id="8QV-Tr-Wyr"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Hyl-i6-QYc"/>
+                <outlet property="contentViewHeight" destination="t0o-6q-B1w" id="lzP-em-t5V"/>
+                <outlet property="doneButton" destination="Aus-6O-ptc" id="fuD-1T-IUj"/>
+                <outlet property="optionTableView" destination="pEm-gG-GEE" id="qMf-dt-Tgi"/>
+                <outlet property="searchBar" destination="JHl-sa-ENu" id="Nxm-yM-9Ah"/>
+                <outlet property="selectedOptionScrollView" destination="Cdk-rf-DQd" id="4IQ-Ki-zMs"/>
+                <outlet property="selectedOptionScrollViewHeight" destination="TOr-eZ-3Kz" id="uTg-Sr-vkM"/>
+                <outlet property="titleLabel" destination="oBp-Mv-vij" id="llr-X5-0BC"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for symptoms" translatesAutoresizingMaskIntoConstraints="NO" id="JHl-sa-ENu">
+                    <rect key="frame" x="20" y="94.5" width="374" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cdk-rf-DQd">
+                    <rect key="frame" x="20" y="160.5" width="374" height="0.0"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Csc-Zd-Es7">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="t0o-6q-B1w"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Csc-Zd-Es7" firstAttribute="centerX" secondItem="Cdk-rf-DQd" secondAttribute="centerX" id="6nl-DR-4SE"/>
+                        <constraint firstAttribute="height" id="TOr-eZ-3Kz"/>
+                        <constraint firstItem="Csc-Zd-Es7" firstAttribute="top" secondItem="Cdk-rf-DQd" secondAttribute="top" id="d21-1q-F6Z"/>
+                        <constraint firstAttribute="bottom" secondItem="Csc-Zd-Es7" secondAttribute="bottom" id="f8I-Vd-kKN"/>
+                        <constraint firstAttribute="trailing" secondItem="Csc-Zd-Es7" secondAttribute="trailing" id="gAN-Pv-VCw"/>
+                        <constraint firstItem="Csc-Zd-Es7" firstAttribute="leading" secondItem="Cdk-rf-DQd" secondAttribute="leading" id="ktB-1M-zeb"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="NEq-uR-mMr"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="1MA-Ly-GFh"/>
+                </scrollView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pEm-gG-GEE">
+                    <rect key="frame" x="20" y="170.5" width="374" height="259.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BUi-If-icf">
+                    <rect key="frame" x="20" y="440" width="374" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aus-6O-ptc" customClass="MCHButton" customModule="MCH" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="177" height="40"/>
+                            <state key="normal" title="Button"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shapeAdapter">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="doneAction:" destination="-1" eventType="touchUpInside" id="Qxh-le-Vbc"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ql-pK-Zpr" customClass="MCHButton" customModule="MCH" customModuleProvider="target">
+                            <rect key="frame" x="197" y="0.0" width="177" height="40"/>
+                            <state key="normal" title="Button"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shapeAdapter">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="piP-rS-gw7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medical History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBp-Mv-vij">
+                    <rect key="frame" x="147.5" y="64" width="119" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" name="primaryColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="BUi-If-icf" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.08" id="0SA-Jg-LE9"/>
+                <constraint firstItem="pEm-gG-GEE" firstAttribute="top" secondItem="Cdk-rf-DQd" secondAttribute="bottom" constant="10" id="1Kg-dR-uMc"/>
+                <constraint firstItem="BUi-If-icf" firstAttribute="top" secondItem="pEm-gG-GEE" secondAttribute="bottom" constant="10" id="2ZW-eM-3be"/>
+                <constraint firstItem="JHl-sa-ENu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="2jP-Kj-sUB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pEm-gG-GEE" secondAttribute="trailing" constant="20" id="6h3-EH-IVK"/>
+                <constraint firstItem="BUi-If-icf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="8EL-Ih-HTm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="BUi-If-icf" secondAttribute="bottom" constant="20" id="94c-Me-acs"/>
+                <constraint firstItem="JHl-sa-ENu" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-20" id="BpG-TV-RRb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BUi-If-icf" secondAttribute="trailing" constant="20" id="JWu-ew-Dih"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Cdk-rf-DQd" secondAttribute="trailing" constant="20" id="LoX-Bz-Fyb"/>
+                <constraint firstItem="pEm-gG-GEE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="RLJ-X3-j6Y"/>
+                <constraint firstItem="oBp-Mv-vij" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="d0Q-DV-f1j"/>
+                <constraint firstItem="Cdk-rf-DQd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="jNj-rf-f85"/>
+                <constraint firstItem="Cdk-rf-DQd" firstAttribute="top" secondItem="JHl-sa-ENu" secondAttribute="bottom" constant="10" id="jys-vy-EVK"/>
+                <constraint firstItem="JHl-sa-ENu" firstAttribute="top" secondItem="oBp-Mv-vij" secondAttribute="bottom" constant="10" id="l9i-Tp-rZz"/>
+                <constraint firstItem="oBp-Mv-vij" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ps7-vD-2wT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="331.8840579710145" y="119.86607142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="primaryColor">
+            <color red="0.1803921568627451" green="0.39215686274509803" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>

@@ -9,6 +9,7 @@ PODS:
     - InputBarAccessoryView (~> 4.2.2)
   - SideMenu (5.0.3)
   - SteviaLayout (4.7.2)
+  - SwiftyJSON (5.0.0)
   - SwipeCellKit (2.7.1)
 
 DEPENDENCIES:
@@ -19,6 +20,7 @@ DEPENDENCIES:
   - MessageKit
   - SideMenu (~> 5.0)
   - SteviaLayout (~> 4.7)
+  - SwiftyJSON
   - SwipeCellKit
 
 SPEC REPOS:
@@ -31,6 +33,7 @@ SPEC REPOS:
     - MessageKit
     - SideMenu
     - SteviaLayout
+    - SwiftyJSON
     - SwipeCellKit
 
 SPEC CHECKSUMS:
@@ -42,8 +45,9 @@ SPEC CHECKSUMS:
   MessageKit: e892a9ca49ebe6d82684d3a93ad84021fa23e2c6
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
   SteviaLayout: 4db9fc4f8c1f7c45b578c300aaf6def90260ad3e
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: 23b7eba6048dd15e54031044f031e39557d112f4
+PODFILE CHECKSUM: df9169fdb6e7aa437187c69a9f23eedb3de40902
 
 COCOAPODS: 1.8.4

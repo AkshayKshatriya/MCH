@@ -10,13 +10,6 @@ import UIKit
 
 class ScheduleActivityView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var eventNameLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!

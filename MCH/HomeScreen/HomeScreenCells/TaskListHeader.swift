@@ -34,7 +34,7 @@ class TaskListHeader: UICollectionReusableView {
                 contentView.addSubview(titleLbl)
                 if !setMarker
                 {
-                    marker.frame = CGRect.init(x: titleLbl.frame.minX, y: (titleLbl.frame.maxY - 10), width: (titleLbl.frame.size.width / 2), height: 2)
+                    marker.frame = CGRect.init(x: titleLbl.frame.minX, y: (titleLbl.frame.maxY - 10), width: (titleLbl.frame.size.width / 3), height: 2)
                     marker.backgroundColor = UIColor.white
                     marker.roundCorners()
                     contentView.addSubview(marker)
@@ -66,7 +66,7 @@ class TaskListHeader: UICollectionReusableView {
             contentView.addSubview(titleLbl)
             if !setMarker
             {
-                marker.frame = CGRect.init(x: titleLbl.frame.minX, y: (titleLbl.frame.maxY - 5), width: (titleLbl.frame.size.width / 2), height: 5)
+                marker.frame = CGRect.init(x: titleLbl.frame.minX, y: (titleLbl.frame.maxY - 5), width: (titleLbl.frame.size.width / 3), height: 5)
                 marker.backgroundColor = UIColor.white
                 marker.roundCorners()
                 contentView.addSubview(marker)

@@ -22,8 +22,11 @@ class SignupMessageController: ChatViewController {
         super.configureMessageCollectionView()
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        //        messagesCollectionView.backgroundColor = .clear
+        //        self.view.backgroundColor = .Appcolor
     }
     
+    //MARK:- set pickers
     func setDatePicker() {
         // Create a DatePicker
         datePicker = UIDatePicker()
@@ -39,13 +42,26 @@ class SignupMessageController: ChatViewController {
         self.view.addSubview(datePicker!)
         datePicker?.translatesAutoresizingMaskIntoConstraints = false
         let leadingConstraint = NSLayoutConstraint(item: datePicker!, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
-//        let bottomConstraint = NSLayoutConstraint(item: datePicker, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
+        //        let bottomConstraint = NSLayoutConstraint(item: datePicker, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
         let triailingConstraint = NSLayoutConstraint(item: datePicker!, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([leadingConstraint, triailingConstraint])
         
         let safeGuide = self.view.safeAreaLayoutGuide
         datePicker?.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor).isActive = true
-
+        
+    }
+    
+    func setDiseasePopup() {
+        let searchBarPopUp = SearchPopUp.init(frame: CGRect.init(x: 0, y: self.view.frame.height - (self.view.frame.height * 0.7), width: self.view.frame.width, height: (self.view.frame.height * 0.7)))
+        let blurView = UIView.init(frame: self.view.frame)
+        searchBarPopUp.cancelClicked = {
+            searchBarPopUp.removeFromSuperview()
+            blurView.removeFromSuperview()
+            self.messageInputBar.isHidden = false
+        }
+        blurView.backgroundColor = .blur
+        self.view.addSubview(blurView)
+        self.view.addSubview(searchBarPopUp)
     }
     
     @objc func datePickerValueChanged(_ sender: UIDatePicker){
@@ -85,7 +101,7 @@ extension SignupMessageController: MessagesDisplayDelegate {
     // MARK: - Text Messages
     
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .white : .darkText
+        return isFromCurrentSender(message: message) ? UIColor.Appcolor : .white
     }
     
     func detectorAttributes(for detector: DetectorType, and message: MessageType, at indexPath: IndexPath) -> [NSAttributedString.Key: Any] {
@@ -102,7 +118,7 @@ extension SignupMessageController: MessagesDisplayDelegate {
     // MARK: - All Messages
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? UIColor.Appcolor : UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        return isFromCurrentSender(message: message) ? UIColor.white : UIColor.Appcolor
     }
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
@@ -128,7 +144,6 @@ extension SignupMessageController: MessagesDisplayDelegate {
 }
 
 // MARK: - MessagesLayoutDelegate
-
 extension SignupMessageController: MessagesLayoutDelegate {
     
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
@@ -185,7 +200,8 @@ extension SignupMessageController : InputBarAccessoryViewDelegate {
                 self?.messageInputBar.inputTextView.placeholder = "Aa"
                 self?.insertMessages(components)
                 self?.messageInputBar.isHidden = true
-                self?.setDatePicker()
+                //                self?.setDatePicker()
+                self?.setDiseasePopup()
                 self?.messagesCollectionView.scrollToBottom(animated: true)
             }
         }

@@ -14,6 +14,7 @@ pod 'FontAwesome.swift'
 pod 'DeviceKit', '~> 2.0'
 pod 'SteviaLayout', '~> 4.7'
 pod 'SwipeCellKit'
+pod 'SwiftyJSON'
 
 
 target 'MCHTests' do

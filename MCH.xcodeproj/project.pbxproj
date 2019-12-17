@@ -15,6 +15,11 @@
 		23005F44238AB1270075F28C /* DailyStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23005F42238AB1270075F28C /* DailyStatusCell.swift */; };
 		23005F45238AB1270075F28C /* DailyStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23005F43238AB1270075F28C /* DailyStatusCell.xib */; };
 		23005F47238AD71A0075F28C /* AngelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23005F46238AD71A0075F28C /* AngelView.swift */; };
+		2308698523A68387007D74F6 /* optionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308698323A68387007D74F6 /* optionsCell.swift */; };
+		2308698623A68387007D74F6 /* optionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2308698423A68387007D74F6 /* optionsCell.xib */; };
+		23089BA423A5F08A00A1D449 /* SearchPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23089BA323A5F08A00A1D449 /* SearchPopUp.xib */; };
+		23089BA623A6021700A1D449 /* MCHButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23089BA523A6021700A1D449 /* MCHButton.swift */; };
+		230A5E0D23A4BEF2007BBED4 /* SearchPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A5E0C23A4BEF2007BBED4 /* SearchPopUp.swift */; };
 		2326777C238417510099771A /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2326777B238417510099771A /* HomeScreenViewController.swift */; };
 		234F47A8239230D500F94DCD /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F47A6239230D500F94DCD /* ScheduleCell.swift */; };
 		234F47A9239230D500F94DCD /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234F47A7239230D500F94DCD /* ScheduleCell.xib */; };
@@ -28,6 +33,8 @@
 		23D43A2A238BC28F000AF966 /* SignupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A29238BC28F000AF966 /* SignupModel.swift */; };
 		23E0426D2392B05B004EB7C1 /* TaskListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0426B2392B05B004EB7C1 /* TaskListHeader.swift */; };
 		23E0426E2392B05B004EB7C1 /* TaskListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23E0426C2392B05B004EB7C1 /* TaskListHeader.xib */; };
+		23E042762393F25A004EB7C1 /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E042742393F25A004EB7C1 /* EmptyCell.swift */; };
+		23E042772393F25A004EB7C1 /* EmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23E042752393F25A004EB7C1 /* EmptyCell.xib */; };
 		23EC79482382C27B00EEE454 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EC79472382C27B00EEE454 /* AppDelegate.swift */; };
 		23EC794A2382C27B00EEE454 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EC79492382C27B00EEE454 /* ViewController.swift */; };
 		23EC794D2382C27B00EEE454 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EC794B2382C27B00EEE454 /* Main.storyboard */; };
@@ -69,6 +76,11 @@
 		23005F42238AB1270075F28C /* DailyStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStatusCell.swift; sourceTree = "<group>"; };
 		23005F43238AB1270075F28C /* DailyStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyStatusCell.xib; sourceTree = "<group>"; };
 		23005F46238AD71A0075F28C /* AngelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngelView.swift; sourceTree = "<group>"; };
+		2308698323A68387007D74F6 /* optionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = optionsCell.swift; sourceTree = "<group>"; };
+		2308698423A68387007D74F6 /* optionsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = optionsCell.xib; sourceTree = "<group>"; };
+		23089BA323A5F08A00A1D449 /* SearchPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPopUp.xib; sourceTree = "<group>"; };
+		23089BA523A6021700A1D449 /* MCHButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCHButton.swift; sourceTree = "<group>"; };
+		230A5E0C23A4BEF2007BBED4 /* SearchPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPopUp.swift; sourceTree = "<group>"; };
 		2326777B238417510099771A /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		234F47A6239230D500F94DCD /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		234F47A7239230D500F94DCD /* ScheduleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
@@ -82,6 +94,8 @@
 		23D43A29238BC28F000AF966 /* SignupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupModel.swift; sourceTree = "<group>"; };
 		23E0426B2392B05B004EB7C1 /* TaskListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListHeader.swift; sourceTree = "<group>"; };
 		23E0426C2392B05B004EB7C1 /* TaskListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListHeader.xib; sourceTree = "<group>"; };
+		23E042742393F25A004EB7C1 /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
+		23E042752393F25A004EB7C1 /* EmptyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCell.xib; sourceTree = "<group>"; };
 		23EC79442382C27B00EEE454 /* MCH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EC79472382C27B00EEE454 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23EC79492382C27B00EEE454 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +161,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2308698223A6834D007D74F6 /* Signup Screen */ = {
+			isa = PBXGroup;
+			children = (
+				23D43A1C238BA7D6000AF966 /* SignupMessageController.swift */,
+				2308698323A68387007D74F6 /* optionsCell.swift */,
+				2308698423A68387007D74F6 /* optionsCell.xib */,
+			);
+			path = "Signup Screen";
+			sourceTree = "<group>";
+		};
 		234F47A42392304700F94DCD /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +189,8 @@
 				234F47A7239230D500F94DCD /* ScheduleCell.xib */,
 				23E0426B2392B05B004EB7C1 /* TaskListHeader.swift */,
 				23E0426C2392B05B004EB7C1 /* TaskListHeader.xib */,
+				23E042742393F25A004EB7C1 /* EmptyCell.swift */,
+				23E042752393F25A004EB7C1 /* EmptyCell.xib */,
 			);
 			path = HomeScreenCells;
 			sourceTree = "<group>";
@@ -172,10 +198,39 @@
 		234F47AA23924CB600F94DCD /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				23005F46238AD71A0075F28C /* AngelView.swift */,
 				234F47AB23924D1D00F94DCD /* ScheduleActivityViewl.swift */,
 				234F47AD23924E1000F94DCD /* ScheduleActivityView.xib */,
+				230A5E0C23A4BEF2007BBED4 /* SearchPopUp.swift */,
+				23089BA323A5F08A00A1D449 /* SearchPopUp.xib */,
+				23089BA523A6021700A1D449 /* MCHButton.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		23BEBBB223A004E100A292A6 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2326777B238417510099771A /* HomeScreenViewController.swift */,
+				234F47A52392306900F94DCD /* HomeScreenCells */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		23BEBBB323A0050000A292A6 /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				23005F39238972060075F28C /* LoginViewController.swift */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		23BEBBB423A0051E00A292A6 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				23EC79492382C27B00EEE454 /* ViewController.swift */,
+			);
+			path = BaseClasses;
 			sourceTree = "<group>";
 		};
 		23D43A20238BAAB5000AF966 /* AudioController */ = {
@@ -190,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				23D43A20238BAAB5000AF966 /* AudioController */,
-				23D43A1C238BA7D6000AF966 /* SignupMessageController.swift */,
 				23D43A1E238BA855000AF966 /* ChatViewController.swift */,
 				23D43A28238BB318000AF966 /* Model */,
 			);
@@ -211,12 +265,12 @@
 			isa = PBXGroup;
 			children = (
 				23EC79752382C39200EEE454 /* Podfile */,
+				53E153219B2A9478C6D378DC /* Frameworks */,
 				23EC79462382C27B00EEE454 /* MCH */,
 				23EC795B2382C27C00EEE454 /* MCHTests */,
 				23EC79662382C27C00EEE454 /* MCHUITests */,
-				23EC79452382C27B00EEE454 /* Products */,
 				30138B0608183BA3E166664C /* Pods */,
-				53E153219B2A9478C6D378DC /* Frameworks */,
+				23EC79452382C27B00EEE454 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -233,17 +287,16 @@
 		23EC79462382C27B00EEE454 /* MCH */ = {
 			isa = PBXGroup;
 			children = (
-				234F47AA23924CB600F94DCD /* CustomView */,
 				23EC79532382C27C00EEE454 /* Info.plist */,
-				23005F46238AD71A0075F28C /* AngelView.swift */,
-				23EC79472382C27B00EEE454 /* AppDelegate.swift */,
-				2326777B238417510099771A /* HomeScreenViewController.swift */,
-				23005F39238972060075F28C /* LoginViewController.swift */,
-				23EC79492382C27B00EEE454 /* ViewController.swift */,
 				23EC794E2382C27C00EEE454 /* Assets.xcassets */,
+				23EC79472382C27B00EEE454 /* AppDelegate.swift */,
+				2308698223A6834D007D74F6 /* Signup Screen */,
+				234F47AA23924CB600F94DCD /* CustomView */,
+				23BEBBB423A0051E00A292A6 /* BaseClasses */,
+				23BEBBB223A004E100A292A6 /* HomeScreen */,
+				23BEBBB323A0050000A292A6 /* LoginScreen */,
 				23D43A23238BAAE1000AF966 /* ChatClasses */,
 				23005F3B238A5C360075F28C /* Extensions */,
-				234F47A52392306900F94DCD /* HomeScreenCells */,
 				23EC79502382C27C00EEE454 /* LaunchScreen.storyboard */,
 				23EC794B2382C27B00EEE454 /* Main.storyboard */,
 				234F47A42392304700F94DCD /* NavigationBar */,
@@ -402,11 +455,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				23E0426E2392B05B004EB7C1 /* TaskListHeader.xib in Resources */,
+				23E042772393F25A004EB7C1 /* EmptyCell.xib in Resources */,
 				234F47A9239230D500F94DCD /* ScheduleCell.xib in Resources */,
 				23EC79782382C4C100EEE454 /* MCHNavigationBar.xib in Resources */,
 				23EC79522382C27C00EEE454 /* LaunchScreen.storyboard in Resources */,
+				23089BA423A5F08A00A1D449 /* SearchPopUp.xib in Resources */,
 				23EC794F2382C27C00EEE454 /* Assets.xcassets in Resources */,
 				23EC79762382C39200EEE454 /* Podfile in Resources */,
+				2308698623A68387007D74F6 /* optionsCell.xib in Resources */,
 				23EC794D2382C27B00EEE454 /* Main.storyboard in Resources */,
 				234F47AE23924E1000F94DCD /* ScheduleActivityView.xib in Resources */,
 				23005F45238AB1270075F28C /* DailyStatusCell.xib in Resources */,
@@ -542,12 +598,16 @@
 				23EC794A2382C27B00EEE454 /* ViewController.swift in Sources */,
 				23005F3F238A5E3F0075F28C /* AppdelegateExtensions.swift in Sources */,
 				23005F47238AD71A0075F28C /* AngelView.swift in Sources */,
+				230A5E0D23A4BEF2007BBED4 /* SearchPopUp.swift in Sources */,
+				23089BA623A6021700A1D449 /* MCHButton.swift in Sources */,
 				23D43A2A238BC28F000AF966 /* SignupModel.swift in Sources */,
 				2326777C238417510099771A /* HomeScreenViewController.swift in Sources */,
 				234F47A8239230D500F94DCD /* ScheduleCell.swift in Sources */,
 				23EC798D2382C7DB00EEE454 /* MCHNavigationBar.swift in Sources */,
 				23005F3D238A5C890075F28C /* String+Interpolation.swift in Sources */,
 				23D43A22238BAAB5000AF966 /* BasicAudioController.swift in Sources */,
+				23E042762393F25A004EB7C1 /* EmptyCell.swift in Sources */,
+				2308698523A68387007D74F6 /* optionsCell.swift in Sources */,
 				23D43A25238BB227000AF966 /* ChatMessage.swift in Sources */,
 				23D43A1D238BA7D6000AF966 /* SignupMessageController.swift in Sources */,
 				23D43A27238BB284000AF966 /* ChatUser.swift in Sources */,
