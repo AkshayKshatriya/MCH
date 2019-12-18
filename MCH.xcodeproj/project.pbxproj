@@ -15,11 +15,13 @@
 		23005F44238AB1270075F28C /* DailyStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23005F42238AB1270075F28C /* DailyStatusCell.swift */; };
 		23005F45238AB1270075F28C /* DailyStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23005F43238AB1270075F28C /* DailyStatusCell.xib */; };
 		23005F47238AD71A0075F28C /* AngelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23005F46238AD71A0075F28C /* AngelView.swift */; };
-		2308698523A68387007D74F6 /* optionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308698323A68387007D74F6 /* optionsCell.swift */; };
-		2308698623A68387007D74F6 /* optionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2308698423A68387007D74F6 /* optionsCell.xib */; };
-		23089BA423A5F08A00A1D449 /* SearchPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23089BA323A5F08A00A1D449 /* SearchPopUp.xib */; };
 		23089BA623A6021700A1D449 /* MCHButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23089BA523A6021700A1D449 /* MCHButton.swift */; };
-		230A5E0D23A4BEF2007BBED4 /* SearchPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A5E0C23A4BEF2007BBED4 /* SearchPopUp.swift */; };
+		23095FF923A8BFFF0070F24C /* SearchPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23095FF523A8BFFF0070F24C /* SearchPopUp.swift */; };
+		23095FFA23A8BFFF0070F24C /* optionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23095FF623A8BFFF0070F24C /* optionsCell.swift */; };
+		23095FFB23A8BFFF0070F24C /* optionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23095FF723A8BFFF0070F24C /* optionsCell.xib */; };
+		23095FFC23A8BFFF0070F24C /* SearchPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23095FF823A8BFFF0070F24C /* SearchPopUp.xib */; };
+		23235B7A23A8B97B0015E914 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 23235B7823A8B97B0015E914 /* Gilroy-ExtraBold.otf */; };
+		23235B7B23A8B97B0015E914 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 23235B7923A8B97B0015E914 /* Gilroy-Light.otf */; };
 		2326777C238417510099771A /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2326777B238417510099771A /* HomeScreenViewController.swift */; };
 		234F47A8239230D500F94DCD /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F47A6239230D500F94DCD /* ScheduleCell.swift */; };
 		234F47A9239230D500F94DCD /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234F47A7239230D500F94DCD /* ScheduleCell.xib */; };
@@ -76,11 +78,13 @@
 		23005F42238AB1270075F28C /* DailyStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStatusCell.swift; sourceTree = "<group>"; };
 		23005F43238AB1270075F28C /* DailyStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyStatusCell.xib; sourceTree = "<group>"; };
 		23005F46238AD71A0075F28C /* AngelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngelView.swift; sourceTree = "<group>"; };
-		2308698323A68387007D74F6 /* optionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = optionsCell.swift; sourceTree = "<group>"; };
-		2308698423A68387007D74F6 /* optionsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = optionsCell.xib; sourceTree = "<group>"; };
-		23089BA323A5F08A00A1D449 /* SearchPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPopUp.xib; sourceTree = "<group>"; };
 		23089BA523A6021700A1D449 /* MCHButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCHButton.swift; sourceTree = "<group>"; };
-		230A5E0C23A4BEF2007BBED4 /* SearchPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPopUp.swift; sourceTree = "<group>"; };
+		23095FF523A8BFFF0070F24C /* SearchPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPopUp.swift; sourceTree = "<group>"; };
+		23095FF623A8BFFF0070F24C /* optionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = optionsCell.swift; sourceTree = "<group>"; };
+		23095FF723A8BFFF0070F24C /* optionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = optionsCell.xib; sourceTree = "<group>"; };
+		23095FF823A8BFFF0070F24C /* SearchPopUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchPopUp.xib; sourceTree = "<group>"; };
+		23235B7823A8B97B0015E914 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
+		23235B7923A8B97B0015E914 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
 		2326777B238417510099771A /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		234F47A6239230D500F94DCD /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		234F47A7239230D500F94DCD /* ScheduleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
@@ -165,10 +169,41 @@
 			isa = PBXGroup;
 			children = (
 				23D43A1C238BA7D6000AF966 /* SignupMessageController.swift */,
-				2308698323A68387007D74F6 /* optionsCell.swift */,
-				2308698423A68387007D74F6 /* optionsCell.xib */,
 			);
 			path = "Signup Screen";
+			sourceTree = "<group>";
+		};
+		23095FF423A8BEE80070F24C /* SearchPopup */ = {
+			isa = PBXGroup;
+			children = (
+				23095FF623A8BFFF0070F24C /* optionsCell.swift */,
+				23095FF723A8BFFF0070F24C /* optionsCell.xib */,
+				23095FF523A8BFFF0070F24C /* SearchPopUp.swift */,
+				23095FF823A8BFFF0070F24C /* SearchPopUp.xib */,
+			);
+			path = SearchPopup;
+			sourceTree = "<group>";
+		};
+		23235B7623A8B91D0015E914 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				23235B7723A8B95F0015E914 /* Fonts */,
+				23D43A23238BAAE1000AF966 /* ChatClasses */,
+				234F47A42392304700F94DCD /* NavigationBar */,
+				23005F3B238A5C360075F28C /* Extensions */,
+				23BEBBB423A0051E00A292A6 /* BaseClasses */,
+				234F47AA23924CB600F94DCD /* CustomView */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		23235B7723A8B95F0015E914 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				23235B7823A8B97B0015E914 /* Gilroy-ExtraBold.otf */,
+				23235B7923A8B97B0015E914 /* Gilroy-Light.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		234F47A42392304700F94DCD /* NavigationBar */ = {
@@ -198,12 +233,11 @@
 		234F47AA23924CB600F94DCD /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				23089BA523A6021700A1D449 /* MCHButton.swift */,
 				23005F46238AD71A0075F28C /* AngelView.swift */,
 				234F47AB23924D1D00F94DCD /* ScheduleActivityViewl.swift */,
 				234F47AD23924E1000F94DCD /* ScheduleActivityView.xib */,
-				230A5E0C23A4BEF2007BBED4 /* SearchPopUp.swift */,
-				23089BA323A5F08A00A1D449 /* SearchPopUp.xib */,
-				23089BA523A6021700A1D449 /* MCHButton.swift */,
+				23095FF423A8BEE80070F24C /* SearchPopup */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -287,19 +321,15 @@
 		23EC79462382C27B00EEE454 /* MCH */ = {
 			isa = PBXGroup;
 			children = (
+				23235B7623A8B91D0015E914 /* Global */,
 				23EC79532382C27C00EEE454 /* Info.plist */,
 				23EC794E2382C27C00EEE454 /* Assets.xcassets */,
 				23EC79472382C27B00EEE454 /* AppDelegate.swift */,
 				2308698223A6834D007D74F6 /* Signup Screen */,
-				234F47AA23924CB600F94DCD /* CustomView */,
-				23BEBBB423A0051E00A292A6 /* BaseClasses */,
 				23BEBBB223A004E100A292A6 /* HomeScreen */,
 				23BEBBB323A0050000A292A6 /* LoginScreen */,
-				23D43A23238BAAE1000AF966 /* ChatClasses */,
-				23005F3B238A5C360075F28C /* Extensions */,
 				23EC79502382C27C00EEE454 /* LaunchScreen.storyboard */,
 				23EC794B2382C27B00EEE454 /* Main.storyboard */,
-				234F47A42392304700F94DCD /* NavigationBar */,
 			);
 			path = MCH;
 			sourceTree = "<group>";
@@ -454,17 +484,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23095FFC23A8BFFF0070F24C /* SearchPopUp.xib in Resources */,
 				23E0426E2392B05B004EB7C1 /* TaskListHeader.xib in Resources */,
 				23E042772393F25A004EB7C1 /* EmptyCell.xib in Resources */,
 				234F47A9239230D500F94DCD /* ScheduleCell.xib in Resources */,
 				23EC79782382C4C100EEE454 /* MCHNavigationBar.xib in Resources */,
 				23EC79522382C27C00EEE454 /* LaunchScreen.storyboard in Resources */,
-				23089BA423A5F08A00A1D449 /* SearchPopUp.xib in Resources */,
+				23095FFB23A8BFFF0070F24C /* optionsCell.xib in Resources */,
 				23EC794F2382C27C00EEE454 /* Assets.xcassets in Resources */,
 				23EC79762382C39200EEE454 /* Podfile in Resources */,
-				2308698623A68387007D74F6 /* optionsCell.xib in Resources */,
+				23235B7B23A8B97B0015E914 /* Gilroy-Light.otf in Resources */,
 				23EC794D2382C27B00EEE454 /* Main.storyboard in Resources */,
 				234F47AE23924E1000F94DCD /* ScheduleActivityView.xib in Resources */,
+				23235B7A23A8B97B0015E914 /* Gilroy-ExtraBold.otf in Resources */,
 				23005F45238AB1270075F28C /* DailyStatusCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,8 +629,8 @@
 			files = (
 				23EC794A2382C27B00EEE454 /* ViewController.swift in Sources */,
 				23005F3F238A5E3F0075F28C /* AppdelegateExtensions.swift in Sources */,
+				23095FF923A8BFFF0070F24C /* SearchPopUp.swift in Sources */,
 				23005F47238AD71A0075F28C /* AngelView.swift in Sources */,
-				230A5E0D23A4BEF2007BBED4 /* SearchPopUp.swift in Sources */,
 				23089BA623A6021700A1D449 /* MCHButton.swift in Sources */,
 				23D43A2A238BC28F000AF966 /* SignupModel.swift in Sources */,
 				2326777C238417510099771A /* HomeScreenViewController.swift in Sources */,
@@ -607,7 +639,7 @@
 				23005F3D238A5C890075F28C /* String+Interpolation.swift in Sources */,
 				23D43A22238BAAB5000AF966 /* BasicAudioController.swift in Sources */,
 				23E042762393F25A004EB7C1 /* EmptyCell.swift in Sources */,
-				2308698523A68387007D74F6 /* optionsCell.swift in Sources */,
+				23095FFA23A8BFFF0070F24C /* optionsCell.swift in Sources */,
 				23D43A25238BB227000AF966 /* ChatMessage.swift in Sources */,
 				23D43A1D238BA7D6000AF966 /* SignupMessageController.swift in Sources */,
 				23D43A27238BB284000AF966 /* ChatUser.swift in Sources */,
