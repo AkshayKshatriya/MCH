@@ -13,12 +13,14 @@ enum ScreenType {
     case Home
 }
 
+
 class MCHNavigationBar: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var menuBtn: UIButton!
+    @IBOutlet var navigationIconBar: [UIView]!
     
     var navigationController : UINavigationController?
     
@@ -55,12 +57,14 @@ class MCHNavigationBar: UIView {
         case .Home:
             self.contentView.backgroundColor = UIColor.Appcolor
             self.titleLabel.textColor = UIColor.white
-            
+            for subview in navigationIconBar {
+                subview.backgroundColor = UIColor.white
+            }
+            self.menuBtn.backgroundColor = .Appcolor
             let str: AttrString = """
                 \(title, .color(UIColor.white), .font(.systemFont(ofSize: UIView.fontHeight(height: 25), weight: .light)))\n\(subtitle, .color(UIColor.white), .font(UIFont.systemFont(ofSize: UIView.fontHeight(height: 25), weight: .semibold)))
                 """
                 self.titleString = str
-            self.menuBtn.setImage(UIImage.init(named: "menuIconWhite"), for: .normal)
         }
     }
     
