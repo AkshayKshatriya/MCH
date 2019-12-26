@@ -27,6 +27,10 @@
 		234F47A9239230D500F94DCD /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234F47A7239230D500F94DCD /* ScheduleCell.xib */; };
 		234F47AC23924D1D00F94DCD /* ScheduleActivityViewl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F47AB23924D1D00F94DCD /* ScheduleActivityViewl.swift */; };
 		234F47AE23924E1000F94DCD /* ScheduleActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234F47AD23924E1000F94DCD /* ScheduleActivityView.xib */; };
+		2365BFFF23AE41CF0047B88D /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2365BFFD23AE41CF0047B88D /* TaskCell.swift */; };
+		2365C00023AE41CF0047B88D /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2365BFFE23AE41CF0047B88D /* TaskCell.xib */; };
+		2365C00423AE530B0047B88D /* TaskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2365C00223AE530B0047B88D /* TaskListCell.swift */; };
+		2365C00523AE530B0047B88D /* TaskListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2365C00323AE530B0047B88D /* TaskListCell.xib */; };
 		23D43A1D238BA7D6000AF966 /* SignupMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A1C238BA7D6000AF966 /* SignupMessageController.swift */; };
 		23D43A1F238BA855000AF966 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A1E238BA855000AF966 /* ChatViewController.swift */; };
 		23D43A22238BAAB5000AF966 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A21238BAAB5000AF966 /* BasicAudioController.swift */; };
@@ -90,6 +94,10 @@
 		234F47A7239230D500F94DCD /* ScheduleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
 		234F47AB23924D1D00F94DCD /* ScheduleActivityViewl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleActivityViewl.swift; sourceTree = "<group>"; };
 		234F47AD23924E1000F94DCD /* ScheduleActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleActivityView.xib; sourceTree = "<group>"; };
+		2365BFFD23AE41CF0047B88D /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		2365BFFE23AE41CF0047B88D /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
+		2365C00223AE530B0047B88D /* TaskListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCell.swift; sourceTree = "<group>"; };
+		2365C00323AE530B0047B88D /* TaskListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListCell.xib; sourceTree = "<group>"; };
 		23D43A1C238BA7D6000AF966 /* SignupMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupMessageController.swift; sourceTree = "<group>"; };
 		23D43A1E238BA855000AF966 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		23D43A21238BAAB5000AF966 /* BasicAudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
@@ -226,6 +234,10 @@
 				23E0426C2392B05B004EB7C1 /* TaskListHeader.xib */,
 				23E042742393F25A004EB7C1 /* EmptyCell.swift */,
 				23E042752393F25A004EB7C1 /* EmptyCell.xib */,
+				2365BFFD23AE41CF0047B88D /* TaskCell.swift */,
+				2365BFFE23AE41CF0047B88D /* TaskCell.xib */,
+				2365C00223AE530B0047B88D /* TaskListCell.swift */,
+				2365C00323AE530B0047B88D /* TaskListCell.xib */,
 			);
 			path = HomeScreenCells;
 			sourceTree = "<group>";
@@ -484,7 +496,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2365C00523AE530B0047B88D /* TaskListCell.xib in Resources */,
 				23095FFC23A8BFFF0070F24C /* SearchPopUp.xib in Resources */,
+				2365C00023AE41CF0047B88D /* TaskCell.xib in Resources */,
 				23E0426E2392B05B004EB7C1 /* TaskListHeader.xib in Resources */,
 				23E042772393F25A004EB7C1 /* EmptyCell.xib in Resources */,
 				234F47A9239230D500F94DCD /* ScheduleCell.xib in Resources */,
@@ -631,12 +645,14 @@
 				23005F3F238A5E3F0075F28C /* AppdelegateExtensions.swift in Sources */,
 				23095FF923A8BFFF0070F24C /* SearchPopUp.swift in Sources */,
 				23005F47238AD71A0075F28C /* AngelView.swift in Sources */,
+				2365BFFF23AE41CF0047B88D /* TaskCell.swift in Sources */,
 				23089BA623A6021700A1D449 /* MCHButton.swift in Sources */,
 				23D43A2A238BC28F000AF966 /* SignupModel.swift in Sources */,
 				2326777C238417510099771A /* HomeScreenViewController.swift in Sources */,
 				234F47A8239230D500F94DCD /* ScheduleCell.swift in Sources */,
 				23EC798D2382C7DB00EEE454 /* MCHNavigationBar.swift in Sources */,
 				23005F3D238A5C890075F28C /* String+Interpolation.swift in Sources */,
+				2365C00423AE530B0047B88D /* TaskListCell.swift in Sources */,
 				23D43A22238BAAB5000AF966 /* BasicAudioController.swift in Sources */,
 				23E042762393F25A004EB7C1 /* EmptyCell.swift in Sources */,
 				23095FFA23A8BFFF0070F24C /* optionsCell.swift in Sources */,

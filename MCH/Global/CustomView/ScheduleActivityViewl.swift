@@ -37,7 +37,7 @@ class ScheduleActivityView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
+        contentView.backgroundColor = UIColor.white
         eventNameLbl.font = UIFont.systemFont(ofSize: UIView.fontHeight(height: 18), weight: .thin)
         timeLbl.font = UIFont.systemFont(ofSize: UIView.fontHeight(height: 20), weight: .medium)
     }

@@ -39,15 +39,21 @@ class ScheduleCell: UICollectionViewCell {
         var xMargin : CGFloat = 0.0
         for i in 1..<8 {
             let activityView = ScheduleActivityView.init(frame: CGRect.init(x: xMargin, y: 0, width: self.scrollView.frame.width * 0.5, height: self.scrollView.frame.height))
+            activityView.tag = (i+3000)
             xMargin += ((self.scrollView.frame.width * 0.5) + 20.0)
             if i > 1 {
                 activityView.contentView.backgroundColor = UIColor.WhiteSelected2
                 activityView.eventNameLbl.textColor = UIColor.black
                 activityView.timeLbl.textColor = UIColor.black
             }
+            else
+            {
+                activityView.contentView.backgroundColor = UIColor.Appcolor
+                activityView.eventNameLbl.textColor = UIColor.white
+                activityView.timeLbl.textColor = UIColor.white
+            }
             contentview.addSubview(activityView)
         }
         contentViewWidth.constant = xMargin
     }
-
 }

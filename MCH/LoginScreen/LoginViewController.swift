@@ -38,8 +38,11 @@ class LoginViewController: ViewController {
     
     
     override func viewDidLayoutSubviews() {
-        loginBtn.roundCorners()
         loginCoverview.roundCorners(radius: 10.0)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loginBtn.roundCorners()
     }
 
     

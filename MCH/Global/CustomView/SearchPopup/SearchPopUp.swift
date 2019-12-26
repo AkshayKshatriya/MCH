@@ -33,6 +33,7 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
     var cellIdentifier = "optionsCell"
     var cancelClicked : (()->())?
     var selectedOptionArray : [String]?
+    var allSelectedOptionArray : [String]?
     var request : DataRequest?
     var searchString = ""
     var gotResponse = false {
@@ -77,12 +78,17 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
         self.optionTableView.delegate = self
         self.optionTableView.separatorStyle = .none
         self.searchBar.becomeFirstResponder()
+        self.allSelectedOptionArray = [String]()
     }
     
     //MARK:- UISearchBarDelegate methods
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        for selectedOption in self.selectedOptionArray ?? [] {
+//            self.allSelectedOptionArray?.append(selectedOption)
+//        }
         self.elementArray.removeAll()
         self.optionTableView.reloadData()
+        setSelectedElementOnScrollView()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -142,6 +148,12 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
             }
             //            }
         }
+        else
+        {
+            self.elementArray.removeAll()
+            self.optionTableView.reloadData()
+            setSelectedElementOnScrollView()
+        }
     }
     
     //MARK:- tableview datasource methods
@@ -166,6 +178,17 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return elementArray.count
     }
+    func removerFromArray(array: inout [String], element : String?) {
+        array.removeAll(where: { (value) -> Bool in
+            if value == element{
+                return true
+            }
+            else
+            {
+                return false
+            }
+        })
+    }
     
     func addRemoveSelectedElement(cell : optionsCell, indexPath: IndexPath)  {
         if cell.checkBoxValue {
@@ -174,17 +197,10 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
             if  indexPath.row < elementArray.count {
                 var element = elementArray[indexPath.row]
                 element.isSelected = false
-            selectedOptionArray?.removeAll(where: { (value) -> Bool in
-                if value == element.name{
-                    return true
-                }
-                else
-                {
-                    return false
-                }
-            })
-            debugPrint(selectedOptionArray ?? [])
-        }
+                removerFromArray(array: &selectedOptionArray!, element: element.name)
+                removerFromArray(array: &allSelectedOptionArray!, element: element.name)
+                debugPrint(selectedOptionArray ?? [])
+            }
         }
         else
         {
@@ -194,6 +210,7 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
                 return
             }
             selectedOptionArray?.append(element)
+            allSelectedOptionArray?.append(element)
             debugPrint(selectedOptionArray ?? [])
         }
         setSelectedElementOnScrollView()
@@ -201,18 +218,9 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
     
     @objc func removeElemnetFromScrollview(_ sender: UITapGestureRecognizer? = nil) {
         if let selectedLabel = sender?.view as? UILabel{
-            let selectedElement = selectedLabel.text?.replacingOccurrences(of: "\tx", with: "")
-            self.selectedOptionArray?.removeAll(where: { (element) -> Bool in
-                if element == selectedElement
-                {
-                    return true
-                }
-                else
-                {
-                    return false
-                }
-            })
-            
+            let selectedElement = selectedLabel.text?.replacingOccurrences(of: "   x", with: "")
+            self.removerFromArray(array: &selectedOptionArray!, element: selectedElement)
+            self.removerFromArray(array: &allSelectedOptionArray!, element: selectedElement)
             for i in 0..<elementArray.count {
                 if (selectedOptionArray?.contains(elementArray[i].name ?? "") ?? false) {
                     elementArray[i].isSelected = true
@@ -239,11 +247,11 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
         }
         
         var maxY : CGFloat = 0.0
-        selectedOptionArray?.reverse()
-        for selectedOption in selectedOptionArray ?? [] {
+        //        selectedOptionArray?.reverse()
+        for selectedOption in allSelectedOptionArray ?? [] {
             let selectedElementLabel = UILabel.init()
             let str: AttrString = """
-            \(selectedOption, .color(.white), .font(.systemFont(ofSize: 13, weight: .light)))\t\("x",.color(UIColor.white), .font(UIFont.systemFont(ofSize: UIView.fontHeight(height: 13), weight: .medium)))
+            \(selectedOption, .color(.white), .font(.systemFont(ofSize: 13, weight: .light)))   \("x",.color(UIColor.white), .font(UIFont.systemFont(ofSize: UIView.fontHeight(height: 13), weight: .medium)))
             """
             selectedElementLabel.font = UIFont.systemFont(ofSize: 13.0, weight: .light)
             selectedElementLabel.attributedText = str.attributedString
@@ -283,7 +291,7 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
         {
             selectedOptionScrollView.flashScrollIndicators()
         }
-        selectedOptionArray?.reverse()
+        //        selectedOptionArray?.reverse()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

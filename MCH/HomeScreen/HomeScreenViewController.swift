@@ -22,6 +22,8 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
         homeCollectionView.register(UINib.init(nibName: "DailyStatusCell", bundle: .main), forCellWithReuseIdentifier: "DailyStatusCell")
         homeCollectionView.register(UINib.init(nibName: "ScheduleCell", bundle: .main), forCellWithReuseIdentifier: "ScheduleCell")
         homeCollectionView.register(UINib.init(nibName: "TaskListHeader", bundle: .main), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "TaskListHeader")
+        homeCollectionView.register(UINib.init(nibName: "TaskListCell", bundle: .main), forCellWithReuseIdentifier: "TaskListCell")
+        
         homeCollectionView.dragInteractionEnabled = true
         homeCollectionView.dataSource = self
         homeCollectionView.delegate = self
@@ -69,13 +71,17 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
             let cellSize = CGSize.init(width: (self.view.frame.width), height: (self.view.frame.width * 0.44))
             return cellSize
             
+        case 3:
+            let cellSize = CGSize.init(width: (self.view.frame.width), height: (self.view.frame.width * 0.44))
+            return cellSize
+            
         default:
             return CGSize.init(width: 0, height: 0)
         }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
@@ -85,6 +91,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
+        debugPrint("index = \(indexPath)")
         switch indexPath.section {
         case 0:
             guard let dailyStatusCell = collectionView.dequeueReusableCell(withReuseIdentifier: "DailyStatusCell", for: indexPath) as? DailyStatusCell
@@ -93,6 +100,13 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
             }
             return dailyStatusCell
         case 2:
+            guard let taskListCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TaskListCell", for: indexPath) as? TaskListCell
+                else {
+                    preconditionFailure("Invalid cell type")
+            }
+            return taskListCell
+            
+        case 3:
             guard let scheduleCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScheduleCell", for: indexPath) as? ScheduleCell
                 else {
                     preconditionFailure("Invalid cell type")
@@ -100,6 +114,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
             return scheduleCell
             
         default:
+            debugPrint("index default = \(indexPath)")
             guard let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCell", for: indexPath) as? EmptyCell
                 else {
                     preconditionFailure("Invalid cell type")
