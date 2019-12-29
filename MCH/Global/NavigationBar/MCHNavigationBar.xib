@@ -55,6 +55,9 @@
                                 <constraint firstAttribute="width" secondItem="pLM-UI-AeB" secondAttribute="height" multiplier="1:1" id="tFl-X7-Ah8"/>
                                 <constraint firstItem="aHE-rK-3iA" firstAttribute="leading" secondItem="pLM-UI-AeB" secondAttribute="leading" id="yak-41-h8R"/>
                             </constraints>
+                            <connections>
+                                <action selector="menuBtnAction:" destination="-1" eventType="valueChanged" id="ilo-0o-8Bi"/>
+                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

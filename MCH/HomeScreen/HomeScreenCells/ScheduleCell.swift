@@ -32,10 +32,12 @@ class ScheduleCell: UICollectionViewCell {
             """
         
             self.titleString = str
+        self.scheduleView.roundCorners(corners: [.topLeft, .bottomLeft],radius: 10.0)
+
     }
     
     override func draw(_ rect: CGRect) {
-        roundCorners(corners: [.topLeft, .bottomLeft],radius: 10.0)
+        self.scheduleView.roundCorners(corners: [.topLeft, .bottomLeft],radius: 10.0)
         var xMargin : CGFloat = 0.0
         for i in 1..<8 {
             let activityView = ScheduleActivityView.init(frame: CGRect.init(x: xMargin, y: 0, width: self.scrollView.frame.width * 0.5, height: self.scrollView.frame.height))

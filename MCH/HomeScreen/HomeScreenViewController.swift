@@ -17,7 +17,6 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        mchNavigationBar.loadUI(type: .Home, title: "Good Morning", subtitle: "Linda")
         homeCollectionView.register(UINib.init(nibName: "EmptyCell", bundle: .main), forCellWithReuseIdentifier: "EmptyCell")
         homeCollectionView.register(UINib.init(nibName: "DailyStatusCell", bundle: .main), forCellWithReuseIdentifier: "DailyStatusCell")
         homeCollectionView.register(UINib.init(nibName: "ScheduleCell", bundle: .main), forCellWithReuseIdentifier: "ScheduleCell")
@@ -28,6 +27,10 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
         homeCollectionView.dataSource = self
         homeCollectionView.delegate = self
         homeCollectionView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        mchNavigationBar.loadUI(type: .Home, title: "Good Morning", subtitle: "Linda")
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -42,6 +45,10 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        homeCollectionView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,6 +69,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
+        debugPrint("index sizeForItemAt = \(indexPath)")
         switch indexPath.section {
         case 0:
             let cellSize = CGSize.init(width: (self.view.frame.width), height: (self.view.frame.width * 0.23))

@@ -65,6 +65,7 @@ class MCHNavigationBar: UIView {
                 \(title, .color(UIColor.white), .font(.systemFont(ofSize: UIView.fontHeight(height: 25), weight: .light)))\n\(subtitle, .color(UIColor.white), .font(UIFont.systemFont(ofSize: UIView.fontHeight(height: 25), weight: .semibold)))
                 """
                 self.titleString = str
+            self.layoutIfNeeded()
         }
     }
     
