@@ -59,7 +59,7 @@ class SignupMessageController: ChatViewController {
             blurView.removeFromSuperview()
             self.messageInputBar.isHidden = false
         }
-        blurView.backgroundColor = .blur
+        blurView.backgroundColor = .Blur
         self.view.addSubview(blurView)
         self.view.addSubview(searchBarPopUp)
     }

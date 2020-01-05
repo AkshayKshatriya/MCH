@@ -9,17 +9,146 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Gilroy-Light.otf">
+            <string>Gilroy-Light</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MCH" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="BYZ-38-t0r" customClass="ProfileViewController" customModule="MCH" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Gw-6a-rtv">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nbm-xM-6d1">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
+                                        <subviews>
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceN-Ip-erm">
+                                                <rect key="frame" x="145" y="10" width="124" height="124"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="ceN-Ip-erm" secondAttribute="height" multiplier="1:1" id="6Ol-3O-JoG"/>
+                                                </constraints>
+                                                <state key="normal" image="tempDp"/>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Linda" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vih-f3-T1H" customClass="MarginTextField" customModule="MCH" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="188" width="364" height="45.5"/>
+                                                <color key="backgroundColor" name="whiteSelected2"/>
+                                                <color key="textColor" name="textColor"/>
+                                                <fontDescription key="fontDescription" name="Gilroy-Light" family="Gilroy" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="27" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h5u-lV-oIa" customClass="MarginTextField" customModule="MCH" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="243" width="167.5" height="45.5"/>
+                                                <color key="backgroundColor" name="whiteSelected2"/>
+                                                <color key="textColor" name="textColor"/>
+                                                <fontDescription key="fontDescription" name="Gilroy-Light" family="Gilroy" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="F" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Tu-y7-jEX" customClass="MarginTextField" customModule="MCH" customModuleProvider="target">
+                                                <rect key="frame" x="221.5" y="243" width="167.5" height="45.5"/>
+                                                <color key="backgroundColor" name="whiteSelected2"/>
+                                                <color key="textColor" name="textColor"/>
+                                                <fontDescription key="fontDescription" name="Gilroy-Light" family="Gilroy" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="9873744425" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wbm-Ae-5Ic" customClass="MarginTextField" customModule="MCH" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="298" width="364" height="45.5"/>
+                                                <color key="backgroundColor" name="whiteSelected2"/>
+                                                <color key="textColor" name="textColor"/>
+                                                <fontDescription key="fontDescription" name="Gilroy-Light" family="Gilroy" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="linda@icloud.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nKY-ys-tQV" customClass="MarginTextField" customModule="MCH" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="353" width="364" height="45.5"/>
+                                                <color key="backgroundColor" name="whiteSelected2"/>
+                                                <color key="textColor" name="textColor"/>
+                                                <fontDescription key="fontDescription" name="Gilroy-Light" family="Gilroy" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMQ-W8-TwY" customClass="ContactCard" customModule="MCH" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="408" width="364" height="74.5"/>
+                                                <color key="backgroundColor" name="whiteSelected2"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53v-Z0-0ah" customClass="MCHButton" customModule="MCH" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="504.5" width="124" height="45.5"/>
+                                                <color key="backgroundColor" name="primaryColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                                                <state key="normal" title="View other details">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="9Tu-y7-jEX" firstAttribute="height" secondItem="h5u-lV-oIa" secondAttribute="height" id="0Ll-b6-YNR"/>
+                                            <constraint firstItem="vih-f3-T1H" firstAttribute="centerX" secondItem="Nbm-xM-6d1" secondAttribute="centerX" id="1n2-u3-wO1"/>
+                                            <constraint firstItem="h5u-lV-oIa" firstAttribute="width" secondItem="vih-f3-T1H" secondAttribute="width" multiplier="0.46" id="5WH-OU-CJT"/>
+                                            <constraint firstItem="Wbm-Ae-5Ic" firstAttribute="leading" secondItem="Nbm-xM-6d1" secondAttribute="leading" constant="25" id="7Qh-P4-WTs"/>
+                                            <constraint firstAttribute="height" constant="2000" id="BjQ-UF-GYH"/>
+                                            <constraint firstAttribute="trailing" secondItem="nKY-ys-tQV" secondAttribute="trailing" constant="25" id="CTC-zz-L65"/>
+                                            <constraint firstItem="vih-f3-T1H" firstAttribute="leading" secondItem="Nbm-xM-6d1" secondAttribute="leading" constant="25" id="Cv7-Rv-byI"/>
+                                            <constraint firstItem="53v-Z0-0ah" firstAttribute="height" secondItem="vih-f3-T1H" secondAttribute="height" id="DJI-Sy-XWp"/>
+                                            <constraint firstItem="Wbm-Ae-5Ic" firstAttribute="firstBaseline" secondItem="h5u-lV-oIa" secondAttribute="baseline" multiplier="3" id="Gpe-gE-8rL"/>
+                                            <constraint firstItem="9Tu-y7-jEX" firstAttribute="width" secondItem="h5u-lV-oIa" secondAttribute="width" id="Gwg-Be-mug"/>
+                                            <constraint firstItem="9Tu-y7-jEX" firstAttribute="top" secondItem="h5u-lV-oIa" secondAttribute="top" id="HwO-IH-458"/>
+                                            <constraint firstItem="vih-f3-T1H" firstAttribute="top" secondItem="ceN-Ip-erm" secondAttribute="bottom" multiplier="1.4" id="IH0-hZ-vlD"/>
+                                            <constraint firstAttribute="trailing" secondItem="lMQ-W8-TwY" secondAttribute="trailing" constant="25" id="Knl-e5-j9h"/>
+                                            <constraint firstItem="ceN-Ip-erm" firstAttribute="centerX" secondItem="Nbm-xM-6d1" secondAttribute="centerX" id="Kwp-BK-KmK"/>
+                                            <constraint firstItem="lMQ-W8-TwY" firstAttribute="firstBaseline" secondItem="nKY-ys-tQV" secondAttribute="baseline" multiplier="2" id="QZI-hf-e6S"/>
+                                            <constraint firstItem="h5u-lV-oIa" firstAttribute="leading" secondItem="Nbm-xM-6d1" secondAttribute="leading" constant="25" id="SbG-qG-Q2B"/>
+                                            <constraint firstAttribute="trailing" secondItem="vih-f3-T1H" secondAttribute="trailing" constant="25" id="Tcq-KE-5Lt"/>
+                                            <constraint firstItem="nKY-ys-tQV" firstAttribute="firstBaseline" secondItem="Wbm-Ae-5Ic" secondAttribute="baseline" multiplier="3" id="V43-lQ-D2s"/>
+                                            <constraint firstItem="ceN-Ip-erm" firstAttribute="top" secondItem="Nbm-xM-6d1" secondAttribute="top" constant="10" id="XOH-ZZ-KgP"/>
+                                            <constraint firstItem="53v-Z0-0ah" firstAttribute="firstBaseline" secondItem="lMQ-W8-TwY" secondAttribute="baseline" multiplier="1.1" id="XPr-9r-OQe"/>
+                                            <constraint firstAttribute="trailing" secondItem="Wbm-Ae-5Ic" secondAttribute="trailing" constant="25" id="aF5-Kp-IJf"/>
+                                            <constraint firstItem="Wbm-Ae-5Ic" firstAttribute="height" secondItem="vih-f3-T1H" secondAttribute="height" id="bKA-39-Xgk"/>
+                                            <constraint firstItem="53v-Z0-0ah" firstAttribute="leading" secondItem="Nbm-xM-6d1" secondAttribute="leading" constant="25" id="dhg-ZD-8t1"/>
+                                            <constraint firstItem="h5u-lV-oIa" firstAttribute="height" secondItem="vih-f3-T1H" secondAttribute="height" id="gVy-eb-WM6"/>
+                                            <constraint firstItem="nKY-ys-tQV" firstAttribute="leading" secondItem="Nbm-xM-6d1" secondAttribute="leading" constant="25" id="lz2-gj-H4G"/>
+                                            <constraint firstItem="nKY-ys-tQV" firstAttribute="height" secondItem="Wbm-Ae-5Ic" secondAttribute="height" id="nGe-MQ-gHc"/>
+                                            <constraint firstItem="h5u-lV-oIa" firstAttribute="firstBaseline" secondItem="vih-f3-T1H" secondAttribute="baseline" multiplier="3" id="qie-NS-wnF"/>
+                                            <constraint firstItem="lMQ-W8-TwY" firstAttribute="leading" secondItem="Nbm-xM-6d1" secondAttribute="leading" constant="25" id="sQE-Rl-vLY"/>
+                                            <constraint firstAttribute="trailing" secondItem="9Tu-y7-jEX" secondAttribute="trailing" constant="25" id="vwo-jW-5ze"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Nbm-xM-6d1" firstAttribute="leading" secondItem="0Gw-6a-rtv" secondAttribute="leading" id="D1D-Nt-mS5"/>
+                                    <constraint firstItem="Nbm-xM-6d1" firstAttribute="top" secondItem="0Gw-6a-rtv" secondAttribute="top" id="Hbt-t3-CBC"/>
+                                    <constraint firstItem="Nbm-xM-6d1" firstAttribute="bottom" secondItem="0Gw-6a-rtv" secondAttribute="bottom" constant="550" id="V9W-ue-hky"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nbm-xM-6d1" secondAttribute="trailing" id="jXp-pk-sTW"/>
+                                    <constraint firstItem="Nbm-xM-6d1" firstAttribute="centerX" secondItem="0Gw-6a-rtv" secondAttribute="centerX" id="xBm-L8-rde"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="cbM-FY-dfX"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="FJG-Z5-ROw"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vih-f3-T1H" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.11" id="4sI-oO-piA"/>
+                            <constraint firstItem="0Gw-6a-rtv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GZw-uO-U5W"/>
+                            <constraint firstItem="53v-Z0-0ah" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="Qzr-dQ-fJ6"/>
+                            <constraint firstItem="ceN-Ip-erm" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="aDS-7K-eST"/>
+                            <constraint firstItem="0Gw-6a-rtv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eXO-Wy-xLo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Gw-6a-rtv" secondAttribute="trailing" id="egh-K6-wFU"/>
+                            <constraint firstItem="lMQ-W8-TwY" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.18" id="g0A-u8-gIe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0Gw-6a-rtv" secondAttribute="bottom" id="jes-Qr-HG1"/>
+                            <constraint firstItem="0Gw-6a-rtv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uBh-Jq-iNL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="detailButton" destination="53v-Z0-0ah" id="KPd-np-SMN"/>
+                        <outlet property="displayPictureBtn" destination="ceN-Ip-erm" id="qKB-Tm-XpH"/>
+                        <outlet property="nameTF" destination="vih-f3-T1H" id="gBy-ZH-C7M"/>
+                        <outlet property="scrollViewTop" destination="uBh-Jq-iNL" id="cMx-Uo-Xfe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -251,11 +380,18 @@
         </scene>
     </scenes>
     <resources>
+        <image name="tempDp" width="241" height="241"/>
         <namedColor name="blur">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.079999998211860657" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryColor">
             <color red="0.1803921568627451" green="0.39215686274509803" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="textColor">
+            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="whiteSelected2">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

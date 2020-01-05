@@ -36,6 +36,9 @@
 		2365C00023AE41CF0047B88D /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2365BFFE23AE41CF0047B88D /* TaskCell.xib */; };
 		2365C00423AE530B0047B88D /* TaskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2365C00223AE530B0047B88D /* TaskListCell.swift */; };
 		2365C00523AE530B0047B88D /* TaskListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2365C00323AE530B0047B88D /* TaskListCell.xib */; };
+		23C6601923C18D970035BB0F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6601823C18D970035BB0F /* ProfileViewController.swift */; };
+		23C6601C23C1BC600035BB0F /* ContactCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C6601B23C1BC600035BB0F /* ContactCard.xib */; };
+		23C6601E23C1BC910035BB0F /* ContactCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6601D23C1BC910035BB0F /* ContactCard.swift */; };
 		23D43A1D238BA7D6000AF966 /* SignupMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A1C238BA7D6000AF966 /* SignupMessageController.swift */; };
 		23D43A1F238BA855000AF966 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A1E238BA855000AF966 /* ChatViewController.swift */; };
 		23D43A22238BAAB5000AF966 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D43A21238BAAB5000AF966 /* BasicAudioController.swift */; };
@@ -108,6 +111,9 @@
 		2365BFFE23AE41CF0047B88D /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		2365C00223AE530B0047B88D /* TaskListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCell.swift; sourceTree = "<group>"; };
 		2365C00323AE530B0047B88D /* TaskListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListCell.xib; sourceTree = "<group>"; };
+		23C6601823C18D970035BB0F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		23C6601B23C1BC600035BB0F /* ContactCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCard.xib; sourceTree = "<group>"; };
+		23C6601D23C1BC910035BB0F /* ContactCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCard.swift; sourceTree = "<group>"; };
 		23D43A1C238BA7D6000AF966 /* SignupMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupMessageController.swift; sourceTree = "<group>"; };
 		23D43A1E238BA855000AF966 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		23D43A21238BAAB5000AF966 /* BasicAudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
@@ -275,6 +281,7 @@
 		234F47AA23924CB600F94DCD /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				23C6601A23C1BC430035BB0F /* ContactCard */,
 				23089BA523A6021700A1D449 /* MCHButton.swift */,
 				23005F46238AD71A0075F28C /* AngelView.swift */,
 				234F47AB23924D1D00F94DCD /* ScheduleActivityViewl.swift */,
@@ -308,6 +315,23 @@
 				23EC79492382C27B00EEE454 /* ViewController.swift */,
 			);
 			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+		23C6601723C18D750035BB0F /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				23C6601823C18D970035BB0F /* ProfileViewController.swift */,
+			);
+			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		23C6601A23C1BC430035BB0F /* ContactCard */ = {
+			isa = PBXGroup;
+			children = (
+				23C6601B23C1BC600035BB0F /* ContactCard.xib */,
+				23C6601D23C1BC910035BB0F /* ContactCard.swift */,
+			);
+			path = ContactCard;
 			sourceTree = "<group>";
 		};
 		23D43A20238BAAB5000AF966 /* AudioController */ = {
@@ -364,6 +388,7 @@
 		23EC79462382C27B00EEE454 /* MCH */ = {
 			isa = PBXGroup;
 			children = (
+				23C6601723C18D750035BB0F /* ProfileScreen */,
 				23235B7623A8B91D0015E914 /* Global */,
 				23EC79532382C27C00EEE454 /* Info.plist */,
 				23EC794E2382C27C00EEE454 /* Assets.xcassets */,
@@ -531,6 +556,7 @@
 				2332558C23B8D9C400487B1C /* HamburgerView.xib in Resources */,
 				23095FFC23A8BFFF0070F24C /* SearchPopUp.xib in Resources */,
 				2332559323B9066D00487B1C /* HambergerCell.xib in Resources */,
+				23C6601C23C1BC600035BB0F /* ContactCard.xib in Resources */,
 				2365C00023AE41CF0047B88D /* TaskCell.xib in Resources */,
 				23E0426E2392B05B004EB7C1 /* TaskListHeader.xib in Resources */,
 				23E042772393F25A004EB7C1 /* EmptyCell.xib in Resources */,
@@ -687,6 +713,7 @@
 				23005F3D238A5C890075F28C /* String+Interpolation.swift in Sources */,
 				2335745823BC46E700528CED /* Constants.swift in Sources */,
 				2365C00423AE530B0047B88D /* TaskListCell.swift in Sources */,
+				23C6601923C18D970035BB0F /* ProfileViewController.swift in Sources */,
 				23D43A22238BAAB5000AF966 /* BasicAudioController.swift in Sources */,
 				23E042762393F25A004EB7C1 /* EmptyCell.swift in Sources */,
 				23095FFA23A8BFFF0070F24C /* optionsCell.swift in Sources */,
@@ -699,6 +726,7 @@
 				23005F3A238972060075F28C /* LoginViewController.swift in Sources */,
 				23EC79482382C27B00EEE454 /* AppDelegate.swift in Sources */,
 				23D43A1F238BA855000AF966 /* ChatViewController.swift in Sources */,
+				23C6601E23C1BC910035BB0F /* ContactCard.swift in Sources */,
 				23E0426D2392B05B004EB7C1 /* TaskListHeader.swift in Sources */,
 				2332559223B9066D00487B1C /* HambergerCell.swift in Sources */,
 				23005F44238AB1270075F28C /* DailyStatusCell.swift in Sources */,

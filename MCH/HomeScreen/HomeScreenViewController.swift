@@ -31,6 +31,8 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
             }
         }
     }
+    let HomeConstants = Constants.HomeScreen.self
+
     
     
     override func viewDidLoad() {
@@ -50,6 +52,12 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
         self.hambergerView.onClick = {() in
             self.showMenu.toggle()
         }
+        
+        self.mchNavigationBar.titleTouchupInside = {() in
+            let storyboard = UIStoryboard(name:Constants.storyboardName , bundle: nil)
+            let profileController = storyboard.instantiateViewController(withIdentifier: self.HomeConstants.storyboardId.rawValue)
+            self.navigationController?.pushViewController(profileController, animated: true)
+        }        
     }
     
     override func viewWillLayoutSubviews() {
@@ -80,7 +88,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLayoutSubviews() {
         print(self.mchNavigationBar.frame.size.height)
-        homeCollectionViewTop.constant = (self.mchNavigationBar.frame.size.height) + 10
+        homeCollectionViewTop.constant = (self.mchNavigationBar.frame.size.height) + UIView.fontHeight(height: 10.0)
     }
     
     //horizontal space between cell

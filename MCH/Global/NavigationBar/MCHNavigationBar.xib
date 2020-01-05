@@ -15,6 +15,7 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="A36-6k-b00"/>
                 <outlet property="menuBtn" destination="pLM-UI-AeB" id="oxa-gA-OOC"/>
                 <outlet property="titleLabel" destination="d34-8A-ARR" id="Hz4-0o-b2P"/>
+                <outlet property="titleTapped" destination="QSv-yK-dsa" id="i8Z-cS-laE"/>
                 <outletCollection property="navigationIconBar" destination="CML-Oh-eNh" collectionClass="NSMutableArray" id="tUQ-SP-3qW"/>
                 <outletCollection property="navigationIconBar" destination="aHE-rK-3iA" collectionClass="NSMutableArray" id="Oh6-xV-Jbp"/>
             </connections>
@@ -71,7 +72,7 @@
                     <rect key="frame" x="0.0" y="85.5" width="414" height="114.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d34-8A-ARR">
-                            <rect key="frame" x="30" y="16" width="254" height="82"/>
+                            <rect key="frame" x="30" y="16" width="276.5" height="82"/>
                             <attributedString key="attributedText">
                                 <fragment>
                                     <string key="content">Reminders 
@@ -92,22 +93,26 @@
                             </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="sIl-1B-SN9">
-                            <rect key="frame" x="304" y="17" width="80" height="80"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tempDp" translatesAutoresizingMaskIntoConstraints="NO" id="sIl-1B-SN9">
+                            <rect key="frame" x="326.5" y="28.5" width="57.5" height="57.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="sIl-1B-SN9" secondAttribute="height" multiplier="1:1" id="AXX-IS-UXv"/>
-                                <constraint firstAttribute="height" constant="80" id="vcD-Ba-Byv"/>
                             </constraints>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="sIl-1B-SN9" firstAttribute="leading" secondItem="d34-8A-ARR" secondAttribute="trailing" constant="20" id="BAy-l3-LO5"/>
                         <constraint firstAttribute="trailing" secondItem="sIl-1B-SN9" secondAttribute="trailing" constant="30" id="Th8-TV-PnS"/>
                         <constraint firstItem="d34-8A-ARR" firstAttribute="centerY" secondItem="fN0-bh-ISN" secondAttribute="centerY" id="Wli-V9-5jq"/>
+                        <constraint firstItem="sIl-1B-SN9" firstAttribute="height" secondItem="fN0-bh-ISN" secondAttribute="height" multiplier="0.5" id="YY4-OA-VD7"/>
                         <constraint firstItem="d34-8A-ARR" firstAttribute="leading" secondItem="fN0-bh-ISN" secondAttribute="leading" constant="30" id="Zyi-mb-4gP"/>
                         <constraint firstItem="sIl-1B-SN9" firstAttribute="centerY" secondItem="fN0-bh-ISN" secondAttribute="centerY" id="cQX-W6-KMO"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="QSv-yK-dsa" appends="YES" id="bum-7e-hm6"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,9 +130,14 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="132.58928571428572"/>
         </view>
+        <tapGestureRecognizer id="QSv-yK-dsa">
+            <connections>
+                <action selector="titleTappedAction:" destination="-1" id="4LD-0k-RPQ"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="rightArrow" width="24" height="24"/>
+        <image name="tempDp" width="241" height="241"/>
         <namedColor name="primaryColor">
             <color red="0.1803921568627451" green="0.39215686274509803" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
