@@ -22,6 +22,7 @@ class MCHNavigationBar: UIView {
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet var navigationIconBar: [UIView]!
     
+    var onClick : (()->())?
     var navigationController : UINavigationController?
     
     var titleString:AttrString?{
@@ -76,8 +77,9 @@ class MCHNavigationBar: UIView {
     }
     
     @IBAction func menuBtnAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.onClick?()
     }
+    
     
     
     /*

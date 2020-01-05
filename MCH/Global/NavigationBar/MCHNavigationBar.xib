@@ -30,14 +30,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLM-UI-AeB" customClass="UIButton">
                             <rect key="frame" x="25" y="4" width="33" height="33.5"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHE-rK-3iA">
+                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHE-rK-3iA">
                                     <rect key="frame" x="0.0" y="14" width="33" height="5"/>
                                     <color key="backgroundColor" name="primaryColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="5" id="uVD-dp-0Ak"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CML-Oh-eNh">
+                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CML-Oh-eNh">
                                     <rect key="frame" x="0.0" y="22.5" width="16.5" height="5"/>
                                     <color key="backgroundColor" name="primaryColor"/>
                                     <constraints>
@@ -56,7 +56,7 @@
                                 <constraint firstItem="aHE-rK-3iA" firstAttribute="leading" secondItem="pLM-UI-AeB" secondAttribute="leading" id="yak-41-h8R"/>
                             </constraints>
                             <connections>
-                                <action selector="menuBtnAction:" destination="-1" eventType="valueChanged" id="ilo-0o-8Bi"/>
+                                <action selector="menuBtnAction:" destination="-1" eventType="touchUpInside" id="Pig-ib-HBw"/>
                             </connections>
                         </view>
                     </subviews>
@@ -92,7 +92,7 @@
                             </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclouser.png" translatesAutoresizingMaskIntoConstraints="NO" id="sIl-1B-SN9">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="sIl-1B-SN9">
                             <rect key="frame" x="304" y="17" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="sIl-1B-SN9" secondAttribute="height" multiplier="1:1" id="AXX-IS-UXv"/>
@@ -127,7 +127,7 @@
         </view>
     </objects>
     <resources>
-        <image name="disclouser.png" width="24" height="24"/>
+        <image name="rightArrow" width="24" height="24"/>
         <namedColor name="primaryColor">
             <color red="0.1803921568627451" green="0.39215686274509803" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

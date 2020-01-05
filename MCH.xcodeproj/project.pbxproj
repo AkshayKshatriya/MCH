@@ -23,6 +23,11 @@
 		23235B7A23A8B97B0015E914 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 23235B7823A8B97B0015E914 /* Gilroy-ExtraBold.otf */; };
 		23235B7B23A8B97B0015E914 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 23235B7923A8B97B0015E914 /* Gilroy-Light.otf */; };
 		2326777C238417510099771A /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2326777B238417510099771A /* HomeScreenViewController.swift */; };
+		2332558C23B8D9C400487B1C /* HamburgerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2332558B23B8D9C400487B1C /* HamburgerView.xib */; };
+		2332558E23B8D9E000487B1C /* HamburgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332558D23B8D9E000487B1C /* HamburgerView.swift */; };
+		2332559223B9066D00487B1C /* HambergerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332559023B9066D00487B1C /* HambergerCell.swift */; };
+		2332559323B9066D00487B1C /* HambergerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2332559123B9066D00487B1C /* HambergerCell.xib */; };
+		2335745823BC46E700528CED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335745723BC46E700528CED /* Constants.swift */; };
 		234F47A8239230D500F94DCD /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F47A6239230D500F94DCD /* ScheduleCell.swift */; };
 		234F47A9239230D500F94DCD /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234F47A7239230D500F94DCD /* ScheduleCell.xib */; };
 		234F47AC23924D1D00F94DCD /* ScheduleActivityViewl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234F47AB23924D1D00F94DCD /* ScheduleActivityViewl.swift */; };
@@ -90,6 +95,11 @@
 		23235B7823A8B97B0015E914 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 		23235B7923A8B97B0015E914 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
 		2326777B238417510099771A /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		2332558B23B8D9C400487B1C /* HamburgerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HamburgerView.xib; sourceTree = "<group>"; };
+		2332558D23B8D9E000487B1C /* HamburgerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerView.swift; sourceTree = "<group>"; };
+		2332559023B9066D00487B1C /* HambergerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HambergerCell.swift; sourceTree = "<group>"; };
+		2332559123B9066D00487B1C /* HambergerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HambergerCell.xib; sourceTree = "<group>"; };
+		2335745723BC46E700528CED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		234F47A6239230D500F94DCD /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		234F47A7239230D500F94DCD /* ScheduleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
 		234F47AB23924D1D00F94DCD /* ScheduleActivityViewl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleActivityViewl.swift; sourceTree = "<group>"; };
@@ -195,6 +205,7 @@
 		23235B7623A8B91D0015E914 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				2335745623BC46D000528CED /* Constants */,
 				23235B7723A8B95F0015E914 /* Fonts */,
 				23D43A23238BAAE1000AF966 /* ChatClasses */,
 				234F47A42392304700F94DCD /* NavigationBar */,
@@ -212,6 +223,25 @@
 				23235B7923A8B97B0015E914 /* Gilroy-Light.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2332558F23B9062100487B1C /* HamburgerView */ = {
+			isa = PBXGroup;
+			children = (
+				2332558B23B8D9C400487B1C /* HamburgerView.xib */,
+				2332558D23B8D9E000487B1C /* HamburgerView.swift */,
+				2332559023B9066D00487B1C /* HambergerCell.swift */,
+				2332559123B9066D00487B1C /* HambergerCell.xib */,
+			);
+			path = HamburgerView;
+			sourceTree = "<group>";
+		};
+		2335745623BC46D000528CED /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2335745723BC46E700528CED /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		234F47A42392304700F94DCD /* NavigationBar */ = {
@@ -250,6 +280,7 @@
 				234F47AB23924D1D00F94DCD /* ScheduleActivityViewl.swift */,
 				234F47AD23924E1000F94DCD /* ScheduleActivityView.xib */,
 				23095FF423A8BEE80070F24C /* SearchPopup */,
+				2332558F23B9062100487B1C /* HamburgerView */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -497,7 +528,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2365C00523AE530B0047B88D /* TaskListCell.xib in Resources */,
+				2332558C23B8D9C400487B1C /* HamburgerView.xib in Resources */,
 				23095FFC23A8BFFF0070F24C /* SearchPopUp.xib in Resources */,
+				2332559323B9066D00487B1C /* HambergerCell.xib in Resources */,
 				2365C00023AE41CF0047B88D /* TaskCell.xib in Resources */,
 				23E0426E2392B05B004EB7C1 /* TaskListHeader.xib in Resources */,
 				23E042772393F25A004EB7C1 /* EmptyCell.xib in Resources */,
@@ -652,6 +685,7 @@
 				234F47A8239230D500F94DCD /* ScheduleCell.swift in Sources */,
 				23EC798D2382C7DB00EEE454 /* MCHNavigationBar.swift in Sources */,
 				23005F3D238A5C890075F28C /* String+Interpolation.swift in Sources */,
+				2335745823BC46E700528CED /* Constants.swift in Sources */,
 				2365C00423AE530B0047B88D /* TaskListCell.swift in Sources */,
 				23D43A22238BAAB5000AF966 /* BasicAudioController.swift in Sources */,
 				23E042762393F25A004EB7C1 /* EmptyCell.swift in Sources */,
@@ -661,10 +695,12 @@
 				23D43A27238BB284000AF966 /* ChatUser.swift in Sources */,
 				23005F41238A621F0075F28C /* UIColor+AppTheme.swift in Sources */,
 				234F47AC23924D1D00F94DCD /* ScheduleActivityViewl.swift in Sources */,
+				2332558E23B8D9E000487B1C /* HamburgerView.swift in Sources */,
 				23005F3A238972060075F28C /* LoginViewController.swift in Sources */,
 				23EC79482382C27B00EEE454 /* AppDelegate.swift in Sources */,
 				23D43A1F238BA855000AF966 /* ChatViewController.swift in Sources */,
 				23E0426D2392B05B004EB7C1 /* TaskListHeader.swift in Sources */,
+				2332559223B9066D00487B1C /* HambergerCell.swift in Sources */,
 				23005F44238AB1270075F28C /* DailyStatusCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

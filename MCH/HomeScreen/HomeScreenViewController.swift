@@ -11,8 +11,27 @@ import DeviceKit
 
 class HomeScreenViewController: ViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var hambergerView: HamburgerView!
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var homeCollectionViewTop: NSLayoutConstraint!
+    @IBOutlet weak var hamburgerviewWidth: NSLayoutConstraint!
+    @IBOutlet weak var hamburgerViewTrailing: NSLayoutConstraint!
+    var showMenu : Bool = false {
+        didSet{
+            if self.showMenu {
+                self.hamburgerViewTrailing.constant = -((UIApplication.shared.keyWindow?.bounds.width)! )
+                        self.hambergerView.superview?.bringSubviewToFront(self.hambergerView)
+                    }
+                    else
+                    {
+                        self.hamburgerViewTrailing.constant = 0
+                    }
+            UIView.animate(withDuration: 0.2) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +46,10 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
         homeCollectionView.dataSource = self
         homeCollectionView.delegate = self
         homeCollectionView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        
+        self.hambergerView.onClick = {() in
+            self.showMenu.toggle()
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -45,6 +68,10 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        mchNavigationBar.onClick = { () in
+            //            self.navigationController?.popViewController(animated: true)
+            self.showMenu.toggle()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

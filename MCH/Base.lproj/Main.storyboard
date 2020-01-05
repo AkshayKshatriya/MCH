@@ -53,25 +53,36 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3L-UC-jVK" customClass="HamburgerView" customModule="MCH" customModuleProvider="target">
+                                <rect key="frame" x="-414" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" name="blur"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="primaryColor"/>
                         <constraints>
                             <constraint firstItem="a7v-WM-DAF" firstAttribute="bottom" secondItem="eHf-ef-pNX" secondAttribute="bottom" id="Lqx-ga-sgg"/>
+                            <constraint firstItem="eHf-ef-pNX" firstAttribute="leading" secondItem="P3L-UC-jVK" secondAttribute="trailing" id="ZtI-IE-EoX"/>
+                            <constraint firstItem="P3L-UC-jVK" firstAttribute="bottom" secondItem="aWe-ob-oX7" secondAttribute="bottom" id="awK-aG-oDh"/>
                             <constraint firstItem="eHf-ef-pNX" firstAttribute="top" secondItem="aWe-ob-oX7" secondAttribute="top" id="dgZ-OG-lzT"/>
                             <constraint firstItem="eHf-ef-pNX" firstAttribute="leading" secondItem="a7v-WM-DAF" secondAttribute="leading" id="fsW-22-Vwt"/>
+                            <constraint firstItem="P3L-UC-jVK" firstAttribute="height" secondItem="aWe-ob-oX7" secondAttribute="height" id="iNf-5s-djw"/>
+                            <constraint firstItem="P3L-UC-jVK" firstAttribute="width" secondItem="aWe-ob-oX7" secondAttribute="width" id="nZJ-Lp-KLp"/>
                             <constraint firstItem="a7v-WM-DAF" firstAttribute="trailing" secondItem="eHf-ef-pNX" secondAttribute="trailing" id="zlV-IY-2UT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a7v-WM-DAF"/>
                     </view>
                     <navigationItem key="navigationItem" id="frW-sa-Rn9"/>
                     <connections>
+                        <outlet property="hambergerView" destination="P3L-UC-jVK" id="2ga-kP-QS8"/>
+                        <outlet property="hamburgerViewTrailing" destination="ZtI-IE-EoX" id="hrP-Gf-oWl"/>
+                        <outlet property="hamburgerviewWidth" destination="nZJ-Lp-KLp" id="7qV-fG-9TT"/>
                         <outlet property="homeCollectionView" destination="eHf-ef-pNX" id="csc-Em-7tQ"/>
                         <outlet property="homeCollectionViewTop" destination="dgZ-OG-lzT" id="13Q-2y-vg2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rvy-x5-Lav" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="994" y="21"/>
+            <point key="canvasLocation" x="2808.6956521739135" y="799.55357142857144"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="7gL-ve-plT">
@@ -240,6 +251,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="blur">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.079999998211860657" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="primaryColor">
             <color red="0.1803921568627451" green="0.39215686274509803" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
