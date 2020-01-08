@@ -12,14 +12,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TaskListHeader" id="U6b-Vx-4bR" customClass="TaskListHeader" customModule="MCH" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgg-jK-Sfu">
-                    <rect key="frame" x="30" y="0.0" width="260" height="50"/>
+                    <rect key="frame" x="30" y="0.0" width="260" height="40"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0s3-83-H5w">
-                            <rect key="frame" x="0.0" y="8" width="500" height="34"/>
+                            <rect key="frame" x="0.0" y="0.0" width="500" height="40"/>
                             <color key="backgroundColor" name="primaryColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="500" id="I1D-We-qZX"/>
@@ -30,7 +30,7 @@
                     <constraints>
                         <constraint firstItem="0s3-83-H5w" firstAttribute="leading" secondItem="xgg-jK-Sfu" secondAttribute="leading" id="aNo-7i-II7"/>
                         <constraint firstAttribute="bottom" secondItem="0s3-83-H5w" secondAttribute="bottom" id="i4d-nI-2jC"/>
-                        <constraint firstItem="0s3-83-H5w" firstAttribute="top" secondItem="xgg-jK-Sfu" secondAttribute="top" constant="8" id="iOj-fi-0Og"/>
+                        <constraint firstItem="0s3-83-H5w" firstAttribute="top" secondItem="xgg-jK-Sfu" secondAttribute="top" id="iOj-fi-0Og"/>
                         <constraint firstAttribute="trailing" secondItem="0s3-83-H5w" secondAttribute="trailing" id="ow1-im-ep3"/>
                         <constraint firstItem="0s3-83-H5w" firstAttribute="centerY" secondItem="xgg-jK-Sfu" secondAttribute="centerY" id="zey-EZ-ONO"/>
                     </constraints>

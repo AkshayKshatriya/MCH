@@ -14,6 +14,7 @@ class ProfileViewController: ViewController {
     @IBOutlet weak var scrollViewTop: NSLayoutConstraint!
     @IBOutlet weak var nameTF: MarginTextField!
     @IBOutlet weak var detailButton: MCHButton!
+    @IBOutlet weak var scrollviewHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class ProfileViewController: ViewController {
         debugPrint(scrollViewTop.constant)
         displayPictureBtn.roundCorners(corners: .allCorners, radius: 15.0)
         detailButton.titleLabel?.font = UIFont.systemFont(ofSize: UIView.fontHeight(height: 10.0), weight: .medium)
+        scrollviewHeight.constant = detailButton.frame.maxY + 50
     }
     
 

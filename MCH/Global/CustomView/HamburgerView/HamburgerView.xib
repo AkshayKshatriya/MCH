@@ -21,6 +21,13 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzD-gI-jtE">
+                    <rect key="frame" x="0.0" y="0.0" width="422" height="896"/>
+                    <color key="backgroundColor" name="blur"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="Bcz-4P-Jus" appends="YES" id="4Ry-rI-DaS"/>
+                    </connections>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMl-27-PtH">
                     <rect key="frame" x="0.0" y="0.0" width="314.5" height="896"/>
                     <subviews>
@@ -52,16 +59,26 @@
                 </view>
             </subviews>
             <color key="backgroundColor" name="blur"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="sMl-27-PtH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Kzd-pF-wPk"/>
+                <constraint firstItem="hzD-gI-jtE" firstAttribute="bottom" secondItem="sMl-27-PtH" secondAttribute="bottom" id="hRJ-6o-lVf"/>
+                <constraint firstItem="hzD-gI-jtE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="j5j-PK-y1e"/>
                 <constraint firstItem="sMl-27-PtH" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.76" id="jlm-u3-j0P"/>
+                <constraint firstItem="hzD-gI-jtE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="kfJ-zz-OK4"/>
                 <constraint firstItem="sMl-27-PtH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tiC-JU-j1e"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hzD-gI-jtE" secondAttribute="trailingMargin" id="w8t-Di-oly"/>
                 <constraint firstAttribute="bottom" secondItem="sMl-27-PtH" secondAttribute="bottom" id="yIf-ZD-Had"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="128" y="96"/>
         </view>
+        <tapGestureRecognizer id="Bcz-4P-Jus">
+            <connections>
+                <action selector="exitActionOnCover:" destination="-1" id="Bvt-L7-vaQ"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="close" width="10" height="10"/>

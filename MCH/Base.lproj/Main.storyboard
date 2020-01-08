@@ -148,6 +148,7 @@
                         <outlet property="displayPictureBtn" destination="ceN-Ip-erm" id="qKB-Tm-XpH"/>
                         <outlet property="nameTF" destination="vih-f3-T1H" id="gBy-ZH-C7M"/>
                         <outlet property="scrollViewTop" destination="uBh-Jq-iNL" id="cMx-Uo-Xfe"/>
+                        <outlet property="scrollviewHeight" destination="BjQ-UF-GYH" id="Bpn-5m-MiL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -16,6 +16,8 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var homeCollectionViewTop: NSLayoutConstraint!
     @IBOutlet weak var hamburgerviewWidth: NSLayoutConstraint!
     @IBOutlet weak var hamburgerViewTrailing: NSLayoutConstraint!
+    var headerHeight = UIView.fontHeight(height: 40.0)
+    
     var showMenu : Bool = false {
         didSet{
             if self.showMenu {
@@ -168,7 +170,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 1 {
-            return CGSize(width: collectionView.frame.width, height:60.0)
+            return CGSize(width: collectionView.frame.width, height:headerHeight)
         }
         else
         {
@@ -190,6 +192,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
         }
         return headerView!
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

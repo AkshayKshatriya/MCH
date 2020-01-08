@@ -22,6 +22,7 @@ class TaskCell: SwipeTableViewCell{
     
     override func draw(_ rect: CGRect) {
         doneButton.roundCorners()
+        doneButton.titleLabel?.font = UIFont.systemFont(ofSize: 10.0, weight: .medium)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

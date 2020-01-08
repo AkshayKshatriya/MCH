@@ -19,29 +19,7 @@ class TaskListHeader: UICollectionReusableView {
     
     var titleArray = [String](){
         didSet{
-            var xMargin : CGFloat = 0.0
-            for title in titleArray {
-                let titleLbl = UILabel.init()
-                titleLbl.text = title
-                titleLbl.textAlignment = .center
-                titleLbl.textColor = UIColor.white
-                let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-                titleLbl.addGestureRecognizer(tap)
-                
-                let lblWidth = titleLbl.intrinsicContentSize.width
-                titleLbl.frame = CGRect.init(x: xMargin, y: 0, width: lblWidth, height: 50)
-                titleLbl.isUserInteractionEnabled = true
-                contentView.addSubview(titleLbl)
-                if !setMarker
-                {
-                    marker.frame = CGRect.init(x: titleLbl.frame.minX, y: (titleLbl.frame.maxY - 10), width: (titleLbl.frame.size.width / 3), height: 2)
-                    marker.backgroundColor = UIColor.white
-                    marker.roundCorners()
-                    contentView.addSubview(marker)
-                    setMarker = true
-                }
-                xMargin += (lblWidth + 25)
-            }
+            self.setNeedsDisplay()
         }
     }
     
@@ -55,18 +33,20 @@ class TaskListHeader: UICollectionReusableView {
         var xMargin : CGFloat = 0.0
         for title in titleArray {
             let titleLbl = UILabel.init()
+            titleLbl.font = UIFont.systemFont(ofSize: UIView.fontHeight(height: 15.0), weight: .regular)
             titleLbl.text = title
+            titleLbl.textAlignment = .left
             titleLbl.textAlignment = .center
             titleLbl.textColor = UIColor.white
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
             titleLbl.addGestureRecognizer(tap)
             let lblWidth = titleLbl.intrinsicContentSize.width
-            titleLbl.frame = CGRect.init(x: xMargin, y: 0, width: lblWidth, height: 50)
+            titleLbl.frame = CGRect.init(x: xMargin, y: 0, width: lblWidth, height: UIView.fontHeight(height: UIView.fontHeight(height: 35)))
             titleLbl.isUserInteractionEnabled = true
             contentView.addSubview(titleLbl)
             if !setMarker
             {
-                marker.frame = CGRect.init(x: titleLbl.frame.minX, y: (titleLbl.frame.maxY - 5), width: (titleLbl.frame.size.width / 3), height: 5)
+                marker.frame = CGRect.init(x: titleLbl.frame.minX, y: (titleLbl.frame.maxY ), width: (titleLbl.frame.size.width / 3), height: UIView.fontHeight(height: 2.0))
                 marker.backgroundColor = UIColor.white
                 marker.roundCorners()
                 contentView.addSubview(marker)

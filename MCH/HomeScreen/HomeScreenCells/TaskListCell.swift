@@ -15,8 +15,8 @@ class TaskListCell: UICollectionViewCell, UITableViewDataSource, UITableViewDele
     
     var cellIdentifier = "TaskCell"
     var maxContentHeight : CGFloat = 0
-    var footterHeight : CGFloat = 40.0
-    var headerHeight : CGFloat = 50.0
+    var footterHeight : CGFloat = UIView.fontHeight(height: 30)
+    var headerHeight : CGFloat = UIView.fontHeight(height: 40)
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -26,7 +26,7 @@ class TaskListCell: UICollectionViewCell, UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.frame.width, height: 50))
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.frame.width, height: headerHeight))
         let titleLabel = UILabel.init(frame: CGRect.init(x: 20, y: 0, width: (headerView.frame.size.width - 40), height: headerView.frame.size.height))
         titleLabel.text = "Daily Task"
         titleLabel.font = UIFont.systemFont(ofSize: 13, weight: .medium)

@@ -69,4 +69,9 @@ class HamburgerView: UIView,UITableViewDataSource,UITableViewDelegate {
         
     }
     
+    @IBAction func exitActionOnCover(_ sender: Any) {
+        self.onClick?()
+    }
+    
+    
 }
