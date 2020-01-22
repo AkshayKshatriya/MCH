@@ -11,32 +11,10 @@ import DeviceKit
 
 class HomeScreenViewController: ViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var hambergerView: HamburgerView!
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var homeCollectionViewTop: NSLayoutConstraint!
-    @IBOutlet weak var hamburgerviewWidth: NSLayoutConstraint!
-    @IBOutlet weak var hamburgerViewTrailing: NSLayoutConstraint!
     var headerHeight = UIView.fontHeight(height: 40.0)
-    
-    var showMenu : Bool = false {
-        didSet{
-            if self.showMenu {
-                self.hamburgerViewTrailing.constant = -((UIApplication.shared.keyWindow?.bounds.width)! )
-                        self.hambergerView.superview?.bringSubviewToFront(self.hambergerView)
-                    }
-                    else
-                    {
-                        self.hamburgerViewTrailing.constant = 0
-                    }
-            UIView.animate(withDuration: 0.2) {
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-    let HomeConstants = Constants.HomeScreen.self
-
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -45,19 +23,14 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
         homeCollectionView.register(UINib.init(nibName: "ScheduleCell", bundle: .main), forCellWithReuseIdentifier: "ScheduleCell")
         homeCollectionView.register(UINib.init(nibName: "TaskListHeader", bundle: .main), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "TaskListHeader")
         homeCollectionView.register(UINib.init(nibName: "TaskListCell", bundle: .main), forCellWithReuseIdentifier: "TaskListCell")
-        
         homeCollectionView.dragInteractionEnabled = true
         homeCollectionView.dataSource = self
         homeCollectionView.delegate = self
         homeCollectionView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
-        
-        self.hambergerView.onClick = {() in
-            self.showMenu.toggle()
-        }
-        
+                
         self.mchNavigationBar.titleTouchupInside = {() in
             let storyboard = UIStoryboard(name:Constants.storyboardName , bundle: nil)
-            let profileController = storyboard.instantiateViewController(withIdentifier: self.HomeConstants.storyboardId.rawValue)
+            let profileController = storyboard.instantiateViewController(withIdentifier: self.storyboardIds.profile.rawValue)
             self.navigationController?.pushViewController(profileController, animated: true)
         }        
     }
@@ -79,12 +52,12 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         mchNavigationBar.onClick = { () in
-            //            self.navigationController?.popViewController(animated: true)
             self.showMenu.toggle()
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         homeCollectionView.reloadData()
     }
     
@@ -93,6 +66,7 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
         homeCollectionViewTop.constant = (self.mchNavigationBar.frame.size.height) + UIView.fontHeight(height: 10.0)
     }
     
+    //MARK:- collection delegates
     //horizontal space between cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
@@ -197,19 +171,5 @@ class HomeScreenViewController: ViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
-    
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+
 }

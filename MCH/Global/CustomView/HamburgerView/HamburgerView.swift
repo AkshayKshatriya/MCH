@@ -15,6 +15,7 @@ class HamburgerView: UIView,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    var didSelectCell : ((IndexPath)->())?
     var onClick : (()->())?
     var cellIdentifier = "HambergerCell"
     var imageNames = [String]()
@@ -48,6 +49,10 @@ class HamburgerView: UIView,UITableViewDataSource,UITableViewDelegate {
     
     @IBAction func closeAction(_ sender: Any) {
         self.onClick?()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.didSelectCell?(indexPath)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -15,7 +15,7 @@ pod 'DeviceKit', '~> 2.0'
 pod 'SteviaLayout', '~> 4.7'
 pod 'SwipeCellKit'
 pod 'SwiftyJSON'
-
+pod 'SwiftKeychainWrapper'
 
 target 'MCHTests' do
 inherit! :search_paths

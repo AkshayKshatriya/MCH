@@ -12,7 +12,10 @@ import InputBarAccessoryView
 
 
 class ChatViewController: MessagesViewController, MessagesDataSource {
-    var questionIndex = 0
+    var datePicker: UIDatePicker?
+    var currentQuestion : Datum?
+    var questions : Question?
+    let storyboardIds = Constants.StoryboardId.self
     let botUser = ChatUser(senderId: "000000", displayName: "Anaha")
     var currentUser = ChatUser(senderId: "000001", displayName: "Guest")
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -36,7 +39,6 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         super.viewDidLoad()
         configureMessageCollectionView()
         configureMessageInputBar()
-        loadFirstMessages()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,15 +57,65 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         //        audioController.stopAnyOngoingPlaying()
     }
     
+    func setInputMethod(currentQuestion : Datum) {
+        switch  currentQuestion.family {
+        case "yesNo" :
+            if let nextIndex = self.currentQuestion?.nextQuestion?.defaultField {
+                self.currentQuestion =  self.getQuestion(onIndex: nextIndex)
+                self.setYesNoPopUp()
+            }
+        case "userInput" :
+            self.messageInputBar.isHidden = false
+            if currentQuestion.showList == 1
+            {
+                
+            }
+            if let nextIndex = self.currentQuestion?.nextQuestion?.defaultField {
+                self.currentQuestion =  self.getQuestion(onIndex: nextIndex)
+                if var messageText = self.currentQuestion?.questionText {
+                    messageText = messageText.replacingOccurrences(of: "{fname}", with: currentUser.displayName)
+                let message = ChatMessage(text: messageText, user: botUser, messageId: getuniqueID(), date: getDate())
+                insertMessage(message)
+                }
+            }
+            
+        case "list" :
+            if let nextIndex = self.currentQuestion?.nextQuestion?.defaultField {
+                self.currentQuestion =  self.getQuestion(onIndex: nextIndex)
+                self.setSearchPopup(type: .disease)
+            }
+        default:
+            self.messageInputBar.isHidden = false
+        }
+    }
+    
+    func getQuestion(onIndex index: Int) ->  Datum?{
+        var selectedDatum : Datum?
+        for question in questions?.data ?? [] {
+            if question.questionId == index
+            {
+                selectedDatum = question
+                break
+            }
+        }
+        return selectedDatum
+    }
+    
+    func getuniqueID() -> String{
+        return UUID().uuidString
+    }
+    
+    func getDate() -> Date {
+        return Date.init()
+    }
+    
     func loadFirstMessages() {
         var messages: [ChatMessage] = []
-        for i in 0..<3 {
-            let uniqueID = UUID().uuidString
-            let date = Date.init()
-            let message = ChatMessage(text: signupMessage[i], user: botUser, messageId: uniqueID, date: date)
+        self.messageInputBar.isHidden = false
+        if let messageText = currentQuestion?.questionText {
+            let message = ChatMessage(text: messageText, user: botUser, messageId: getuniqueID(), date: getDate())
             messages.append(message)
         }
-        self.questionIndex = 2
         self.messageList = messages
         self.messagesCollectionView.reloadData()
         self.messagesCollectionView.scrollToBottom()
@@ -102,6 +154,77 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
             for: .highlighted
         )
     }
+    
+    //MARK:- set pickers
+    func setDatePicker() {
+        // Create a DatePicker
+        datePicker = UIDatePicker()
+        
+        // Set some of UIDatePicker properties
+        datePicker?.timeZone = NSTimeZone.local
+        datePicker?.backgroundColor = UIColor.white
+        
+        // Add an event to call onDidChangeDate function when value is changed.
+        datePicker?.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+        
+        // Add DataPicker to the view
+        self.view.addSubview(datePicker!)
+        datePicker?.translatesAutoresizingMaskIntoConstraints = false
+        let leadingConstraint = NSLayoutConstraint(item: datePicker!, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
+        //        let bottomConstraint = NSLayoutConstraint(item: datePicker, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
+        let triailingConstraint = NSLayoutConstraint(item: datePicker!, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
+        NSLayoutConstraint.activate([leadingConstraint, triailingConstraint])
+        
+        let safeGuide = self.view.safeAreaLayoutGuide
+        datePicker?.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor).isActive = true
+        
+    }
+    
+    func setSearchPopup(type : searchType) {
+        let storyboard = UIStoryboard(name:Constants.storyboardName , bundle: nil)
+        guard let searchPopupController = storyboard.instantiateViewController(withIdentifier: self.storyboardIds.searchPopUp.rawValue) as? SearchPopupScreen else { return }
+        searchPopupController.type = type
+        searchPopupController.completionHandler = {(selectedOption) in
+            debugPrint(selectedOption)
+            self.messageInputBar.isHidden = false
+        }
+        self.navigationController?.present(searchPopupController, animated: true, completion: {
+        })
+    }
+    
+    func setYesNoPopUp() {
+        let height = (self.view.frame.width  * 0.3)
+        let y = self.view.frame.height - height
+        let yesNoPopup = YesNoView.init(frame: CGRect.init(x: 0, y: y, width: self.view.frame.width, height: height))
+        self.view.addSubview(yesNoPopup)
+        
+        yesNoPopup.yesButtonAction = {
+            yesNoPopup.removeFromSuperview()
+        }
+        
+        yesNoPopup.noButtonAction = {
+            yesNoPopup.removeFromSuperview()
+        }
+        
+    }
+    
+    @objc func datePickerValueChanged(_ sender: UIDatePicker){
+        
+        // Create date formatter
+        let dateFormatter: DateFormatter = DateFormatter()
+        
+        // Set date format
+        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
+        
+        // Apply date format
+        let selectedDate: String = dateFormatter.string(from: sender.date)
+        
+        print("Selected value \(selectedDate)")
+        self.datePicker?.removeFromSuperview()
+        self.messageInputBar.isHidden = false
+    }
+    
+    
     
     // MARK: - Helpers
     

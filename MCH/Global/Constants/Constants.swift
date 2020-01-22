@@ -12,9 +12,18 @@ public struct Constants {
     
     static let storyboardName = "Main"
     
-    public enum HomeScreen: String {
-        case storyboardId = "ProfileViewController"
+    public enum StoryboardId: String {
+        case profile = "ProfileViewController"
+        case activityCenter = "ActivityCenterController"
+        case searchPopUp = "SearchPopUpController"
     }
+    
+//    public enum HomeScreen: String {
+//    }
+    
+//    public enum ActivityCenterController : String {
+//    }
+    
     public enum NavigationBar: String {
         case backIcon = "back"
     }
@@ -34,6 +43,11 @@ public struct Constants {
     }
     public enum ProfileScreen: String {
         case backIcon = "back"
+    }
+    
+    public enum SearchApi: String {
+        case disease = "https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search?sf=code,name&terms="
+        case surgery = "https://browser.ihtsdotools.org/snowstorm/snomed-ct/browser/MAIN/2019-07-31/descriptions?limit=100&term=surgery&active=true&conceptActive=true&lang=english"
     }
 
 }

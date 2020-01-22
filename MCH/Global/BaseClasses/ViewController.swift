@@ -29,9 +29,26 @@ class ViewController: UIViewController {
     let subtitleFont : CGFloat = 18.0
     let btnFont : CGFloat = 15.0
     let FooterFont : CGFloat = 12.0
-    
+    let storyboardIds = Constants.StoryboardId.self
     var screenWidth : CGFloat?
     var screenHeight : CGFloat?
+    var sideMenu: HamburgerView?
+    var showMenu : Bool = false {
+        didSet{
+            if self.sideMenu != nil {
+                UIView.animate(withDuration: 0.2) {
+                    if self.showMenu {
+                        self.sideMenu?.frame = CGRect.init(x: 0, y: 0, width: self.screenWidth!, height: self.screenHeight!)
+                        self.sideMenu?.superview?.bringSubviewToFront(self.sideMenu!)
+                    }
+                    else
+                    {
+                        self.sideMenu?.frame = CGRect.init(x: -self.screenWidth!, y: 0, width: self.screenWidth!, height: self.screenHeight!)
+                    }
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,13 +69,44 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.sideMenu?.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.sideMenu?.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.sideMenu?.isHidden = true
     }
     
     private func setupView() {
         mchNavigationBar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mchNavigationBar)
+        
+        self.sideMenu = HamburgerView.init(frame: CGRect.init(x: -(screenWidth!), y: 0, width: screenWidth!, height: screenHeight!))
+        self.view.addSubview(sideMenu!)
+        
+        
+        self.sideMenu?.onClick = {() in
+            self.showMenu.toggle()
+        }
+        
+        self.sideMenu?.didSelectCell = {(indexPath) in
+            switch indexPath.row {
+            case 0:
+                self.showMenu.toggle()
+            case 3:
+                let storyboard = UIStoryboard(name:Constants.storyboardName , bundle: nil)
+                let activityCenter = storyboard.instantiateViewController(withIdentifier: self.storyboardIds.activityCenter.rawValue)
+                self.navigationController?.pushViewController(activityCenter, animated: true)
+                
+            default:
+                self.showMenu.toggle()
+                
+            }
+        }
     }
-    
-    
+
 }
 

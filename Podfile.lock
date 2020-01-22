@@ -3,12 +3,13 @@ PODS:
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
   - DeviceKit (2.3.0)
-  - FontAwesome.swift (1.8.2)
+  - FontAwesome.swift (1.8.3)
   - InputBarAccessoryView (4.2.2)
   - MessageKit (3.0.0):
     - InputBarAccessoryView (~> 4.2.2)
   - SideMenu (5.0.3)
-  - SteviaLayout (4.7.2)
+  - SteviaLayout (4.7.3)
+  - SwiftKeychainWrapper (3.4.0)
   - SwiftyJSON (5.0.0)
   - SwipeCellKit (2.7.1)
 
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - MessageKit
   - SideMenu (~> 5.0)
   - SteviaLayout (~> 4.7)
+  - SwiftKeychainWrapper
   - SwiftyJSON
   - SwipeCellKit
 
@@ -33,6 +35,7 @@ SPEC REPOS:
     - MessageKit
     - SideMenu
     - SteviaLayout
+    - SwiftKeychainWrapper
     - SwiftyJSON
     - SwipeCellKit
 
@@ -40,14 +43,15 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
   DeviceKit: da103891aa928d89f64ea8dd8aca738c5f3d8ac0
-  FontAwesome.swift: 7938d6a03113ff3f39001bde7f50be8a0903d605
+  FontAwesome.swift: 2a3235131a6caffc6b2ccba318e94d793b2fd342
   InputBarAccessoryView: 2b937602598e2fab3149f37f51dd7ad795653812
   MessageKit: e892a9ca49ebe6d82684d3a93ad84021fa23e2c6
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
-  SteviaLayout: 4db9fc4f8c1f7c45b578c300aaf6def90260ad3e
+  SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
+  SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: df9169fdb6e7aa437187c69a9f23eedb3de40902
+PODFILE CHECKSUM: 3382fe92588163c7ea6e95fdada6129929dfece6
 
 COCOAPODS: 1.8.4

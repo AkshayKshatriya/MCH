@@ -15,6 +15,82 @@
         </array>
     </customFonts>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="a7t-KF-H22">
+            <objects>
+                <viewController id="otI-W2-JdN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nz4-UO-ciF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Ylq-Cf-F9M"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AoV-vI-wNe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4153" y="18"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wZ7-zh-QJz">
+            <objects>
+                <viewController id="NaS-Ul-aK4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NQV-7x-w9s">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="5pN-2n-YJj"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="39k-R9-frb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3137" y="14"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="mhQ-F1-Bu6">
+            <objects>
+                <viewController id="UD7-v3-aXS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AQz-3Z-Beg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Afv-tK-wdZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m8e-g4-t7V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2150" y="6"/>
+        </scene>
+        <!--Activity Center Controller-->
+        <scene sceneID="ceb-e5-os0">
+            <objects>
+                <viewController storyboardIdentifier="ActivityCenterController" id="33O-W1-bUN" customClass="ActivityCenterController" customModule="MCH" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bjh-cM-Bzy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1VE-n3-qYp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="X1d-qC-Xqx" firstAttribute="trailing" secondItem="1VE-n3-qYp" secondAttribute="trailing" id="IRc-fN-rr9"/>
+                            <constraint firstItem="1VE-n3-qYp" firstAttribute="leading" secondItem="X1d-qC-Xqx" secondAttribute="leading" id="imz-be-JY9"/>
+                            <constraint firstItem="X1d-qC-Xqx" firstAttribute="bottom" secondItem="1VE-n3-qYp" secondAttribute="bottom" id="jeF-Gj-48e"/>
+                            <constraint firstItem="1VE-n3-qYp" firstAttribute="centerX" secondItem="bjh-cM-Bzy" secondAttribute="centerX" id="ug0-X0-Aao"/>
+                            <constraint firstItem="1VE-n3-qYp" firstAttribute="top" secondItem="X1d-qC-Xqx" secondAttribute="top" id="zLp-gy-jr8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="X1d-qC-Xqx"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="1VE-n3-qYp" id="3FG-NV-XVW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uGC-FN-0ak" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1217" y="21"/>
+        </scene>
         <!--Profile View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -44,39 +120,39 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="27" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h5u-lV-oIa" customClass="MarginTextField" customModule="MCH" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="243" width="167.5" height="45.5"/>
+                                                <rect key="frame" x="25" y="244" width="167.5" height="45.5"/>
                                                 <color key="backgroundColor" name="whiteSelected2"/>
                                                 <color key="textColor" name="textColor"/>
                                                 <fontDescription key="fontDescription" name="Gilroy-Light" family="Gilroy" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="F" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Tu-y7-jEX" customClass="MarginTextField" customModule="MCH" customModuleProvider="target">
-                                                <rect key="frame" x="221.5" y="243" width="167.5" height="45.5"/>
+                                                <rect key="frame" x="221.5" y="244" width="167.5" height="45.5"/>
                                                 <color key="backgroundColor" name="whiteSelected2"/>
                                                 <color key="textColor" name="textColor"/>
                                                 <fontDescription key="fontDescription" name="Gilroy-Light" family="Gilroy" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="9873744425" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wbm-Ae-5Ic" customClass="MarginTextField" customModule="MCH" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="298" width="364" height="45.5"/>
+                                                <rect key="frame" x="25" y="300" width="364" height="45.5"/>
                                                 <color key="backgroundColor" name="whiteSelected2"/>
                                                 <color key="textColor" name="textColor"/>
                                                 <fontDescription key="fontDescription" name="Gilroy-Light" family="Gilroy" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="linda@icloud.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nKY-ys-tQV" customClass="MarginTextField" customModule="MCH" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="353" width="364" height="45.5"/>
+                                                <rect key="frame" x="25" y="356" width="364" height="45.5"/>
                                                 <color key="backgroundColor" name="whiteSelected2"/>
                                                 <color key="textColor" name="textColor"/>
                                                 <fontDescription key="fontDescription" name="Gilroy-Light" family="Gilroy" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMQ-W8-TwY" customClass="ContactCard" customModule="MCH" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="408" width="364" height="74.5"/>
+                                                <rect key="frame" x="25" y="412" width="364" height="74.5"/>
                                                 <color key="backgroundColor" name="whiteSelected2"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53v-Z0-0ah" customClass="MCHButton" customModule="MCH" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="504.5" width="124" height="45.5"/>
+                                                <rect key="frame" x="25" y="509" width="124" height="45.5"/>
                                                 <color key="backgroundColor" name="primaryColor"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
                                                 <state key="normal" title="View other details">
@@ -183,29 +259,18 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3L-UC-jVK" customClass="HamburgerView" customModule="MCH" customModuleProvider="target">
-                                <rect key="frame" x="-414" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" name="blur"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" name="primaryColor"/>
                         <constraints>
                             <constraint firstItem="a7v-WM-DAF" firstAttribute="bottom" secondItem="eHf-ef-pNX" secondAttribute="bottom" id="Lqx-ga-sgg"/>
-                            <constraint firstItem="eHf-ef-pNX" firstAttribute="leading" secondItem="P3L-UC-jVK" secondAttribute="trailing" id="ZtI-IE-EoX"/>
-                            <constraint firstItem="P3L-UC-jVK" firstAttribute="bottom" secondItem="aWe-ob-oX7" secondAttribute="bottom" id="awK-aG-oDh"/>
                             <constraint firstItem="eHf-ef-pNX" firstAttribute="top" secondItem="aWe-ob-oX7" secondAttribute="top" id="dgZ-OG-lzT"/>
                             <constraint firstItem="eHf-ef-pNX" firstAttribute="leading" secondItem="a7v-WM-DAF" secondAttribute="leading" id="fsW-22-Vwt"/>
-                            <constraint firstItem="P3L-UC-jVK" firstAttribute="height" secondItem="aWe-ob-oX7" secondAttribute="height" id="iNf-5s-djw"/>
-                            <constraint firstItem="P3L-UC-jVK" firstAttribute="width" secondItem="aWe-ob-oX7" secondAttribute="width" id="nZJ-Lp-KLp"/>
                             <constraint firstItem="a7v-WM-DAF" firstAttribute="trailing" secondItem="eHf-ef-pNX" secondAttribute="trailing" id="zlV-IY-2UT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a7v-WM-DAF"/>
                     </view>
                     <navigationItem key="navigationItem" id="frW-sa-Rn9"/>
                     <connections>
-                        <outlet property="hambergerView" destination="P3L-UC-jVK" id="2ga-kP-QS8"/>
-                        <outlet property="hamburgerViewTrailing" destination="ZtI-IE-EoX" id="hrP-Gf-oWl"/>
-                        <outlet property="hamburgerviewWidth" destination="nZJ-Lp-KLp" id="7qV-fG-9TT"/>
                         <outlet property="homeCollectionView" destination="eHf-ef-pNX" id="csc-Em-7tQ"/>
                         <outlet property="homeCollectionViewTop" destination="dgZ-OG-lzT" id="13Q-2y-vg2"/>
                     </connections>
@@ -361,6 +426,21 @@
             </objects>
             <point key="canvasLocation" x="3662" y="23"/>
         </scene>
+        <!--Search Popup Screen-->
+        <scene sceneID="Opf-Qe-D0g">
+            <objects>
+                <viewController storyboardIdentifier="SearchPopUpController" id="Cif-zP-TI0" customClass="SearchPopupScreen" customModule="MCH" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kjv-Q8-Juj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="G2r-ze-XfJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TEw-bQ-cNZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4526" y="27"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="2r6-OD-cyV">
             <objects>
@@ -382,9 +462,6 @@
     </scenes>
     <resources>
         <image name="tempDp" width="241" height="241"/>
-        <namedColor name="blur">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.079999998211860657" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="primaryColor">
             <color red="0.1803921568627451" green="0.39215686274509803" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

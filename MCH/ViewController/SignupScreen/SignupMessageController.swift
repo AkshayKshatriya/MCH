@@ -9,13 +9,33 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
+import SwiftyJSON
 
 class SignupMessageController: ChatViewController {
-    var datePicker: UIDatePicker?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         messageInputBar.delegate = self
+        
+        if let path = Bundle.main.path(forResource: "questions", ofType: "json") {
+            do {
+                let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                do
+                {
+                    let json = try JSON(data: jsonData)
+                    self.questions = Question.init(fromJson: json)
+                    debugPrint(questions)
+                    self.currentQuestion = getQuestion(onIndex: 1)
+                }
+                catch let error {
+                    debugPrint(error)
+                }
+            } catch {
+                print(error)
+            }
+        }
+        loadFirstMessages()
     }
     
     override func configureMessageCollectionView() {
@@ -26,72 +46,16 @@ class SignupMessageController: ChatViewController {
         //        self.view.backgroundColor = .Appcolor
     }
     
-    //MARK:- set pickers
-    func setDatePicker() {
-        // Create a DatePicker
-        datePicker = UIDatePicker()
-        
-        // Set some of UIDatePicker properties
-        datePicker?.timeZone = NSTimeZone.local
-        datePicker?.backgroundColor = UIColor.white
-        
-        // Add an event to call onDidChangeDate function when value is changed.
-        datePicker?.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
-        
-        // Add DataPicker to the view
-        self.view.addSubview(datePicker!)
-        datePicker?.translatesAutoresizingMaskIntoConstraints = false
-        let leadingConstraint = NSLayoutConstraint(item: datePicker!, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
-        //        let bottomConstraint = NSLayoutConstraint(item: datePicker, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
-        let triailingConstraint = NSLayoutConstraint(item: datePicker!, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
-        NSLayoutConstraint.activate([leadingConstraint, triailingConstraint])
-        
-        let safeGuide = self.view.safeAreaLayoutGuide
-        datePicker?.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor).isActive = true
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        guard let searchPopupScreen = segue.destination as? SearchPopupScreen else {return}
         
     }
     
-    func setDiseasePopup() {
-        let searchBarPopUp = SearchPopUp.init(frame: CGRect.init(x: 0, y: self.view.frame.height - (self.view.frame.height * 0.7), width: self.view.frame.width, height: (self.view.frame.height * 0.7)))
-        let blurView = UIView.init(frame: self.view.frame)
-        searchBarPopUp.cancelClicked = {
-            searchBarPopUp.removeFromSuperview()
-            blurView.removeFromSuperview()
-            self.messageInputBar.isHidden = false
-        }
-        blurView.backgroundColor = .Blur
-        self.view.addSubview(blurView)
-        self.view.addSubview(searchBarPopUp)
-    }
-    
-    @objc func datePickerValueChanged(_ sender: UIDatePicker){
-        
-        // Create date formatter
-        let dateFormatter: DateFormatter = DateFormatter()
-        
-        // Set date format
-        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
-        
-        // Apply date format
-        let selectedDate: String = dateFormatter.string(from: sender.date)
-        
-        print("Selected value \(selectedDate)")
-        self.datePicker?.removeFromSuperview()
-        self.messageInputBar.isHidden = false
-    }
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
 
 // MARK: - MessagesDisplayDelegate
@@ -200,9 +164,12 @@ extension SignupMessageController : InputBarAccessoryViewDelegate {
                 self?.messageInputBar.inputTextView.placeholder = "Aa"
                 self?.insertMessages(components)
                 self?.messageInputBar.isHidden = true
-                //                self?.setDatePicker()
-                self?.setDiseasePopup()
                 self?.messagesCollectionView.scrollToBottom(animated: true)
+                //TODO:- set next question
+                debugPrint(components)
+                if let currentQuestion = self?.currentQuestion {
+                    self?.setInputMethod(currentQuestion: currentQuestion)
+                }
             }
         }
     }

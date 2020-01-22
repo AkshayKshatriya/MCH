@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
 
 struct ElementOption {
     var id : String?
@@ -16,7 +15,14 @@ struct ElementOption {
     var isSelected = false
 }
 
-class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
+public enum searchType {
+    case surgery
+    case disease
+    case medicine
+}
+
+
+class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -27,14 +33,19 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
     @IBOutlet weak var doneButton: MCHButton!
     @IBOutlet weak var cancelButton: MCHButton!
     @IBOutlet weak var scrollViewContentView: UIView!
+        @IBOutlet weak var loader: UIActivityIndicatorView!
+        @IBOutlet weak var loaderCover: UIView!
     
+    var prevSearchText  = ""
+    var type : searchType?
+    let constant = Constants.SearchApi.self
+    var request : DataRequest?
     var prevFrame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
     var elementArray = [ElementOption]()
     var cellIdentifier = "optionsCell"
-    var cancelClicked : (()->())?
+    var cancelClicked : (([String])->())?
     var selectedOptionArray : [String]?
     var allSelectedOptionArray : [String]?
-    var request : DataRequest?
     var searchString = ""
     var gotResponse = false {
         didSet(value){
@@ -79,13 +90,19 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
         self.optionTableView.separatorStyle = .none
         self.searchBar.becomeFirstResponder()
         self.allSelectedOptionArray = [String]()
+        self.selectedOptionScrollView.delegate = self
+        self.selectedOptionScrollView.indicatorStyle = .black
+        //        optionTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
     }
+    
+    //    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    //        if keyPath == "contentSize" && ((object as? UITableView) != nil) {
+    //
+    //        }
+    //    }
     
     //MARK:- UISearchBarDelegate methods
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        for selectedOption in self.selectedOptionArray ?? [] {
-//            self.allSelectedOptionArray?.append(selectedOption)
-//        }
         self.elementArray.removeAll()
         self.optionTableView.reloadData()
         setSelectedElementOnScrollView()
@@ -105,54 +122,98 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
         getAutoComplete(searchText: searchText)
     }
     
+    func searchDisease(searchText : String) {
+        let url: String = constant.disease.rawValue + searchText
+        self.request = NetworkLayer.shared.getRequestWith(nil, url) { (json, error, request) in
+            DispatchQueue.main.async {
+                if (error != nil) {
+                    debugPrint(error!.localizedDescription)
+                }
+                else
+                {
+                    guard let jsonResponse = json else {
+                        return
+                    }
+                    let requestSearchString = request?.request?.url?.absoluteString.components(separatedBy: "terms=")
+                    debugPrint("search response = \(requestSearchString)")
+                    if requestSearchString != nil && (requestSearchString?.count ?? 0) > 1 && self.searchString == (requestSearchString?[1] ?? "" ) {
+                        self.elementArray.removeAll()
+                        for i in 0 ..< jsonResponse.arrayValue[3].count {
+                            if let name = jsonResponse.arrayValue[3].arrayValue[i].arrayValue[1].string{
+                                let id = jsonResponse.arrayValue[3].arrayValue[i].arrayValue[0].string ?? "\(i)"
+                                let elementOption = ElementOption.init(id:id , name: name)
+                                self.elementArray.append(elementOption)
+                                self.selectedOptionArray = [String]()
+                            }
+                        }
+                        self.optionTableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    
+    func searchSurgery(searchText : String) {
+        let url: String = constant.surgery.rawValue.replacingOccurrences(of: "surgery", with: searchText)
+        self.request = NetworkLayer.shared.getRequestWith(nil, url) { (json, error, request) in
+            DispatchQueue.main.async {
+                if (error != nil) {
+                    debugPrint(error!.localizedDescription)
+                }
+                else
+                {
+                    guard let jsonResponse = json else {
+                        return
+                    }
+                    let requestSearchString = request?.request?.url?.absoluteString.components(separatedBy: "term=")[1].components(separatedBy: "&")[0]
+                    debugPrint("search response = \(requestSearchString)")
+                    if requestSearchString != nil && self.searchString == requestSearchString {
+                        self.elementArray.removeAll()
+                        for item in jsonResponse["items"].arrayValue {
+                            let name = item["concept"]["fsn"]["term"].string
+                            let id = item["concept"]["id"].string
+                            let elementOption = ElementOption.init(id:id , name: name)
+                            self.elementArray.append(elementOption)
+                            self.selectedOptionArray = [String]()
+                        }
+                        self.optionTableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    
     func getAutoComplete(searchText : String)  {
         if searchText != "" {
-            //            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            let diseaseUrl: String = "https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search?sf=code,name&terms=\(searchText)"
-            guard let url = URL.init(string: diseaseUrl) else { return }
-            //                self.gotResponse = false
-            self.request = Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil ).responseJSON
-                { response in
-                    debugPrint(response.result)
-                    let requestSearchString = self.request?.request?.url?.absoluteString.components(separatedBy: "terms=")
-                    
-                    if requestSearchString != nil && (requestSearchString?.count ?? 0) > 1 && self.searchString == (requestSearchString?[1] ?? "" ) {
-                        switch response.result{
-                        case .success:
-                            do
-                            {
-                                self.elementArray.removeAll()
-                                let json = try JSON(data: response.data!)
-                                for i in 0 ..< json.arrayValue[3].count {
-                                    if let name = json.arrayValue[3].arrayValue[i].arrayValue[1].string{
-                                        let id = json.arrayValue[3].arrayValue[i].arrayValue[0].string ?? "\(i)"
-                                        let elementOption = ElementOption.init(id:id , name: name)
-                                        self.elementArray.append(elementOption)
-                                        self.selectedOptionArray = [String]()
-                                    }
-                                }
-                            }
-                            catch let error {
-                                //////////////////////////////json error///////////////////////////////
-                                print(error)
-                                //////////////////////////////////////////////////////////////////////
-                            }
-                            debugPrint(self.elementArray)
-                            self.optionTableView.reloadData()
-                        //                            self.gotResponse = true
-                        case .failure(_):
-                            debugPrint(response)
-                            //                            self.gotResponse = true
-                        }
-                    }
+            switch type {
+            case .surgery:
+                self.request?.cancel()
+                print("search response = \(prevSearchText) - \(searchText)")
+                if self.prevSearchText != searchText {
+                    self.searchSurgery(searchText: searchText)
+                    self.prevSearchText = searchText
+                }
+            case .disease:
+                self.request?.cancel()
+                print("search response = \(prevSearchText) - \(searchText)")
+                if self.prevSearchText != searchText {
+                    searchDisease(searchText: searchText)
+                    self.prevSearchText = searchText
+                }
+            case .medicine:
+                searchDisease(searchText: searchText)
+            case .none:
+                break
             }
-            //            }
         }
         else
         {
-            self.elementArray.removeAll()
-            self.optionTableView.reloadData()
-            setSelectedElementOnScrollView()
+            DispatchQueue.main.async {
+                self.request?.cancel()
+                self.elementArray.removeAll()
+                self.optionTableView.reloadData()
+                self.setSelectedElementOnScrollView()
+            }
         }
     }
     
@@ -163,6 +224,10 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
         }
         if let name = elementArray[indexPath.row].name  {
             cell.optionLabel.text = name
+            if (allSelectedOptionArray?.contains(name) ?? false)
+            {
+                elementArray[indexPath.row].isSelected = true
+            }
             if elementArray[indexPath.row].isSelected {
                 cell.checkBoxValue = true
             }
@@ -171,6 +236,7 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
                 cell.checkBoxValue = false
             }
         }
+        
         cell.selectionStyle = .none
         return cell
     }
@@ -247,7 +313,6 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
         }
         
         var maxY : CGFloat = 0.0
-        //        selectedOptionArray?.reverse()
         for selectedOption in allSelectedOptionArray ?? [] {
             let selectedElementLabel = UILabel.init()
             let str: AttrString = """
@@ -284,17 +349,20 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
             scrollViewContentView.addSubview(selectedElementLabel)
         }
         contentViewHeight.constant = maxY
-        if maxY < (self.frame.height * 0.3){
+        if maxY < (self.frame.height * 0.15){
             selectedOptionScrollViewHeight.constant = maxY
         }
         else
         {
             selectedOptionScrollView.flashScrollIndicators()
+            DispatchQueue.main.async {
+                self.selectedOptionScrollView.setContentOffset(CGPoint.init(x: 0.0, y: (maxY - (self.frame.height * 0.11)) ), animated:true)
+            }
         }
-        //        selectedOptionArray?.reverse()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.endEditing(true)
         request?.cancel()
         if let cell = ( tableView.cellForRow(at: indexPath) as? optionsCell ) {
             self.addRemoveSelectedElement(cell: cell, indexPath: indexPath)
@@ -309,9 +377,14 @@ class SearchPopUp: UIView, UISearchBarDelegate, UITableViewDataSource, UITableVi
     }
     
     @IBAction func doneAction(_ sender: Any) {
+        self.cancelClicked?(allSelectedOptionArray ?? [])
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-        self.cancelClicked?()
+        self.cancelClicked?(allSelectedOptionArray ?? [])
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.endEditing(true)
     }
 }
