@@ -16,8 +16,9 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     var currentQuestion : Datum?
     var questions : Question?
     let storyboardIds = Constants.StoryboardId.self
-    let botUser = ChatUser(senderId: "000000", displayName: "Anaha")
-    var currentUser = ChatUser(senderId: "000001", displayName: "Guest")
+    let botUser = ChatUser(senderId: "000000", displayName: "Anaha", lastName: "")
+    var currentUser = ChatUser(senderId: "000001", displayName: "Guest", lastName: "")
+    var userDictionary: [String: Any] = [:]
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -57,32 +58,32 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         //        audioController.stopAnyOngoingPlaying()
     }
     
-    func setInputMethod(currentQuestion : Datum) {
-        switch  currentQuestion.family {
+    func setInputMethod() {
+        switch  self.currentQuestion?.family ?? ""{
         case "yesNo" :
             if let nextIndex = self.currentQuestion?.nextQuestion?.defaultField {
                 self.currentQuestion =  self.getQuestion(onIndex: nextIndex)
+                self.currentQuestion =  self.getQuestion(onIndex: nextIndex)
+                if var messageText = self.currentQuestion?.questionText {
+                    messageText = messageText.replacingOccurrences(of: "{fname}", with: currentUser.displayName)
+                    let message = ChatMessage(text: messageText, user: botUser, messageId: getuniqueID(), date: getDate())
+                    insertMessage(message)
+                }
                 self.setYesNoPopUp()
             }
         case "userInput" :
             self.messageInputBar.isHidden = false
-            if currentQuestion.showList == 1
+            if currentQuestion?.showList == 1
             {
                 
             }
             if let nextIndex = self.currentQuestion?.nextQuestion?.defaultField {
                 self.currentQuestion =  self.getQuestion(onIndex: nextIndex)
                 if var messageText = self.currentQuestion?.questionText {
-                    messageText = messageText.replacingOccurrences(of: "{fname}", with: currentUser.displayName)
-                let message = ChatMessage(text: messageText, user: botUser, messageId: getuniqueID(), date: getDate())
-                insertMessage(message)
+                    messageText = messageText.replacingOccurrences(of: "{fname}", with: currentUser.displayName).replacingOccurrences(of: "{lname}", with: currentUser.lastName)
+                    let message = ChatMessage(text: messageText, user: botUser, messageId: getuniqueID(), date: getDate())
+                    insertMessage(message)
                 }
-            }
-            
-        case "list" :
-            if let nextIndex = self.currentQuestion?.nextQuestion?.defaultField {
-                self.currentQuestion =  self.getQuestion(onIndex: nextIndex)
-                self.setSearchPopup(type: .disease)
             }
         default:
             self.messageInputBar.isHidden = false
@@ -200,10 +201,29 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         
         yesNoPopup.yesButtonAction = {
             yesNoPopup.removeFromSuperview()
+            if self.currentQuestion?.showList == 1 {
+                switch self.currentQuestion?.listType {
+                case "surgicalHistory":
+                    self.setSearchPopup(type: .surgery)
+                case "familyMedicalHistory":
+                    self.setSearchPopup(type: .disease)
+                case "allergies":
+                    self.setSearchPopup(type: .disease)
+                case "medication":
+                    self.setSearchPopup(type: .medicine)
+                default:
+                    break
+                }
+            }
+            else
+            {
+                self.messageInputBar.isHidden = false
+            }
         }
         
         yesNoPopup.noButtonAction = {
             yesNoPopup.removeFromSuperview()
+            self.messageInputBar.isHidden = false
         }
         
     }

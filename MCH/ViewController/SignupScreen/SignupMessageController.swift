@@ -167,9 +167,9 @@ extension SignupMessageController : InputBarAccessoryViewDelegate {
                 self?.messagesCollectionView.scrollToBottom(animated: true)
                 //TODO:- set next question
                 debugPrint(components)
-                if let currentQuestion = self?.currentQuestion {
-                    self?.setInputMethod(currentQuestion: currentQuestion)
-                }
+                self!.userDictionary[self?.currentQuestion!.key ?? "unknown"] =  components[0] as? String ?? ""
+                debugPrint("dict =", self!.userDictionary)
+                self?.setInputMethod()
             }
         }
     }
@@ -178,6 +178,10 @@ extension SignupMessageController : InputBarAccessoryViewDelegate {
         for component in data {
             if currentUser.displayName == "Guest" {
                 currentUser.displayName = component as? String ?? ""
+            }
+            if currentQuestion?.questionText.contains("may I know your surname?") ?? false
+            {
+                currentUser.lastName = component as? String ?? ""
             }
             let user = currentUser
             if let str = component as? String {
