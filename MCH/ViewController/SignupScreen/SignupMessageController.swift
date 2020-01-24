@@ -169,10 +169,15 @@ extension SignupMessageController : InputBarAccessoryViewDelegate {
                 debugPrint(components)
                 self!.userDictionary[self?.currentQuestion!.key ?? "unknown"] =  components[0] as? String ?? ""
                 debugPrint("dict =", self!.userDictionary)
+                if let nextIndex = self?.currentQuestion?.nextQuestion?.defaultField
+                {
+                    self?.currentQuestion =  self?.getQuestion(onIndex: nextIndex)
+                }
                 self?.setInputMethod()
             }
         }
     }
+    
     
     private func insertMessages(_ data: [Any]) {
         for component in data {

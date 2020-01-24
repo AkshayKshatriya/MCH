@@ -15,6 +15,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     var datePicker: UIDatePicker?
     var currentQuestion : Datum?
     var questions : Question?
+    var changeMessageCollectionInset = false
     let storyboardIds = Constants.StoryboardId.self
     let botUser = ChatUser(senderId: "000000", displayName: "Anaha", lastName: "")
     var currentUser = ChatUser(senderId: "000001", displayName: "Guest", lastName: "")
@@ -40,6 +41,22 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         super.viewDidLoad()
         configureMessageCollectionView()
         configureMessageInputBar()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    @objc func keyboardDidHide(notification: Notification) {
+        if changeMessageCollectionInset{
+            changeMessageCollectionInset = false
+            let deadlineTime = DispatchTime.now() + .milliseconds(20)
+            DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+                UIView.animate(withDuration: 0.2) {
+                    let collectionViewInset = self.messagesCollectionView.contentInset
+                    self.messagesCollectionView.contentInset.bottom = (collectionViewInset.bottom + (self.datePicker?.frame.height)! + 20)
+                    self.messagesCollectionView.scrollToBottom(animated: true)
+                }
+                debugPrint(self.messagesCollectionView.contentInset)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,33 +75,26 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         //        audioController.stopAnyOngoingPlaying()
     }
     
+    func insertQuestion() {
+        if var messageText = self.currentQuestion?.questionText {
+            messageText = messageText.replacingOccurrences(of: "{fname}", with: currentUser.displayName).replacingOccurrences(of: "{lname}", with: currentUser.lastName).replacingOccurrences(of: "{partner_fname}", with: (userDictionary["partnerFname"] as? String ?? "")).replacingOccurrences(of: "{partner_fname}", with: (userDictionary["partnerFname"] as? String ?? ""))
+            let message = ChatMessage(text: messageText, user: botUser, messageId: getuniqueID(), date: getDate())
+            insertMessage(message)
+        }
+    }
+    
     func setInputMethod() {
         switch  self.currentQuestion?.family ?? ""{
         case "yesNo" :
-            if let nextIndex = self.currentQuestion?.nextQuestion?.defaultField {
-                self.currentQuestion =  self.getQuestion(onIndex: nextIndex)
-                self.currentQuestion =  self.getQuestion(onIndex: nextIndex)
-                if var messageText = self.currentQuestion?.questionText {
-                    messageText = messageText.replacingOccurrences(of: "{fname}", with: currentUser.displayName)
-                    let message = ChatMessage(text: messageText, user: botUser, messageId: getuniqueID(), date: getDate())
-                    insertMessage(message)
-                }
-                self.setYesNoPopUp()
-            }
+            insertQuestion()
+            self.setYesNoPopUp()
+            
         case "userInput" :
             self.messageInputBar.isHidden = false
-            if currentQuestion?.showList == 1
-            {
-                
-            }
-            if let nextIndex = self.currentQuestion?.nextQuestion?.defaultField {
-                self.currentQuestion =  self.getQuestion(onIndex: nextIndex)
-                if var messageText = self.currentQuestion?.questionText {
-                    messageText = messageText.replacingOccurrences(of: "{fname}", with: currentUser.displayName).replacingOccurrences(of: "{lname}", with: currentUser.lastName)
-                    let message = ChatMessage(text: messageText, user: botUser, messageId: getuniqueID(), date: getDate())
-                    insertMessage(message)
-                }
-            }
+            insertQuestion()
+        case "datePicker":
+            insertQuestion()
+            self.setDatePicker()
         default:
             self.messageInputBar.isHidden = false
         }
@@ -158,6 +168,9 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     
     //MARK:- set pickers
     func setDatePicker() {
+        self.changeMessageCollectionInset = true
+        self.messageInputBar.inputTextView.resignFirstResponder()
+        
         // Create a DatePicker
         datePicker = UIDatePicker()
         
@@ -167,18 +180,18 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         
         // Add an event to call onDidChangeDate function when value is changed.
         datePicker?.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
-        
+        self.messageInputBar.isHidden = true
         // Add DataPicker to the view
         self.view.addSubview(datePicker!)
+        self.datePicker?.superview?.bringSubviewToFront(self.datePicker!)
         datePicker?.translatesAutoresizingMaskIntoConstraints = false
+        self.messagesCollectionView.scrollToBottom(animated: true)
         let leadingConstraint = NSLayoutConstraint(item: datePicker!, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
-        //        let bottomConstraint = NSLayoutConstraint(item: datePicker, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
         let triailingConstraint = NSLayoutConstraint(item: datePicker!, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([leadingConstraint, triailingConstraint])
         
         let safeGuide = self.view.safeAreaLayoutGuide
         datePicker?.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor).isActive = true
-        
     }
     
     func setSearchPopup(type : searchType) {
@@ -234,14 +247,27 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         let dateFormatter: DateFormatter = DateFormatter()
         
         // Set date format
-        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
+        dateFormatter.dateFormat = "MM/dd/yyyy"
         
         // Apply date format
         let selectedDate: String = dateFormatter.string(from: sender.date)
         
         print("Selected value \(selectedDate)")
         self.datePicker?.removeFromSuperview()
+        self.datePicker = nil
         self.messageInputBar.isHidden = false
+        //insert selected date in message
+        let message = ChatMessage(text: selectedDate, user: botUser, messageId: getuniqueID(), date: getDate())
+        insertMessage(message)
+        //add selected date to answer dictionary
+        self.userDictionary[self.currentQuestion!.key ?? "unknown"] =  selectedDate
+        debugPrint("dict =", self.userDictionary)
+        UIView.animate(withDuration: 0.2) {
+            let collectionViewInset = self.messagesCollectionView.contentInset
+            self.messagesCollectionView.contentInset.bottom = collectionViewInset.top
+            self.messagesCollectionView.scrollToBottom(animated: true)
+        }
+        self.setInputMethod()
     }
     
     
