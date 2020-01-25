@@ -12,10 +12,16 @@ import InputBarAccessoryView
 
 
 class ChatViewController: MessagesViewController, MessagesDataSource {
+    enum ViewType {
+        case DatePicker
+        case YesNo
+    }
     var datePicker: UIDatePicker?
+    var yesNoPopup : YesNoView?
     var currentQuestion : Datum?
     var questions : Question?
     var changeMessageCollectionInset = false
+    var viewType : ViewType?
     let storyboardIds = Constants.StoryboardId.self
     let botUser = ChatUser(senderId: "000000", displayName: "Anaha", lastName: "")
     var currentUser = ChatUser(senderId: "000001", displayName: "Guest", lastName: "")
@@ -37,6 +43,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         return formatter
     }()
     
+    //MARK:- lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMessageCollectionView()
@@ -44,37 +51,104 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
-    @objc func keyboardDidHide(notification: Notification) {
+    @objc func keyboardDidHide(notification: Notification?) {
+        debugPrint("keyboard","keyboardDidHide")
+        //set collectionnview inset with respective presenting userinput
         if changeMessageCollectionInset{
-            changeMessageCollectionInset = false
-            let deadlineTime = DispatchTime.now() + .milliseconds(20)
-            DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
-                UIView.animate(withDuration: 0.2) {
-                    let collectionViewInset = self.messagesCollectionView.contentInset
-                    self.messagesCollectionView.contentInset.bottom = (collectionViewInset.bottom + (self.datePicker?.frame.height)! + 20)
-                    self.messagesCollectionView.scrollToBottom(animated: true)
+            switch self.viewType {
+            case .DatePicker:
+                self.changeMessageCollectionInset = false
+                let deadlineTime = DispatchTime.now() + .milliseconds(20)
+                let collectionViewInset = self.messagesCollectionView.contentInset
+                let insetForDatePicker = (collectionViewInset.bottom + (self.datePicker?.frame.height)!)
+                let contenOffset = CGPoint.init(x: 0, y: (self.messagesCollectionView.contentOffset.y + insetForDatePicker))
+                if self.messagesCollectionView.contentInset.bottom != insetForDatePicker {
+                    DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+                        UIView.animate(withDuration: 0.2) {
+                            self.messagesCollectionView.contentInset.bottom = insetForDatePicker
+                            self.messagesCollectionView.contentOffset = contenOffset
+                            self.datePicker?.frame.origin = CGPoint.init(x: 0, y: (self.view.frame.height - (self.datePicker?.frame.height)!))
+                        }
+                    }
                 }
                 debugPrint(self.messagesCollectionView.contentInset)
+            case .YesNo:
+                self.changeMessageCollectionInset = false
+                let deadlineTime = DispatchTime.now() + .milliseconds(20)
+                let collectionViewInset = self.messagesCollectionView.contentInset
+                let insetForYesNoView = (collectionViewInset.bottom + (self.yesNoPopup?.frame.height)!)
+                let contenOffset = CGPoint.init(x: 0, y: (self.messagesCollectionView.contentOffset.y + insetForYesNoView))
+                if self.messagesCollectionView.contentInset.bottom != insetForYesNoView {
+                    DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+                        UIView.animate(withDuration: 0.2) {
+                            self.messagesCollectionView.contentInset.bottom = insetForYesNoView
+                            self.messagesCollectionView.contentOffset = contenOffset
+                            self.datePicker?.frame.origin = CGPoint.init(x: 0, y: (self.view.frame.height - (self.datePicker?.frame.height)!))
+                        }
+                    }
+                }
+                debugPrint(self.messagesCollectionView.contentInset)
+            default:
+                self.messagesCollectionView.scrollToBottom(animated: true)
+                UIView.animate(withDuration: 0.2) {
+                    self.messagesCollectionView.contentInset.bottom = self.messageInputBar.frame.height
+                }
             }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        //        ChatSocket.shared.connect(with: [SampleData.shared.nathan, SampleData.shared.wu])
-        //            .onNewMessage { [weak self] message in
-        //                self?.insertMessage(message)
-        //        }
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        //        ChatSocket.shared.disconnect()
-        //        audioController.stopAnyOngoingPlaying()
+        
     }
     
+    //MARK:- configure chat
+    func getuniqueID() -> String{
+        return UUID().uuidString
+    }
+    
+    func getDate() -> Date {
+        return Date.init()
+    }
+    
+    func loadFirstMessages() {
+        var messages: [ChatMessage] = []
+        self.messageInputBar.isHidden = false
+        if let messageText = currentQuestion?.questionText {
+            let message = ChatMessage(text: messageText, user: botUser, messageId: getuniqueID(), date: getDate())
+            messages.append(message)
+        }
+        self.messageList = messages
+        self.messagesCollectionView.reloadData()
+        self.messagesCollectionView.scrollToBottom()
+    }
+    
+    func configureMessageCollectionView() {
+        
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messageCellDelegate = self
+        
+        scrollsToBottomOnKeyboardBeginsEditing = true // default false
+        maintainPositionOnKeyboardFrameChanged = true // default false
+        
+        messagesCollectionView.addSubview(refreshControl)
+        //        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
+    }
+    
+    func configureMessageInputBar() {
+        messageInputBar.inputTextView.tintColor = UIColor.Appcolor
+        messageInputBar.sendButton.setTitleColor(UIColor.Appcolor, for: .normal)
+        messageInputBar.sendButton.setTitleColor(
+            UIColor.Appcolor.withAlphaComponent(0.3),
+            for: .highlighted
+        )
+    }
+    
+    //MARK:- Questions type view methods
     func insertQuestion() {
         if var messageText = self.currentQuestion?.questionText {
             messageText = messageText.replacingOccurrences(of: "{fname}", with: currentUser.displayName).replacingOccurrences(of: "{lname}", with: currentUser.lastName).replacingOccurrences(of: "{partner_fname}", with: (userDictionary["partnerFname"] as? String ?? "")).replacingOccurrences(of: "{partner_fname}", with: (userDictionary["partnerFname"] as? String ?? ""))
@@ -112,86 +186,29 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         return selectedDatum
     }
     
-    func getuniqueID() -> String{
-        return UUID().uuidString
-    }
-    
-    func getDate() -> Date {
-        return Date.init()
-    }
-    
-    func loadFirstMessages() {
-        var messages: [ChatMessage] = []
-        self.messageInputBar.isHidden = false
-        if let messageText = currentQuestion?.questionText {
-            let message = ChatMessage(text: messageText, user: botUser, messageId: getuniqueID(), date: getDate())
-            messages.append(message)
-        }
-        self.messageList = messages
-        self.messagesCollectionView.reloadData()
-        self.messagesCollectionView.scrollToBottom()
-    }
-    //
-    //    @objc
-    //    func loadMoreMessages() {
-    //        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
-    //            SampleData.shared.getMessages(count: 20) { messages in
-    //                DispatchQueue.main.async {
-    //                    self.messageList.insert(contentsOf: messages, at: 0)
-    //                    self.messagesCollectionView.reloadDataAndKeepOffset()
-    //                    self.refreshControl.endRefreshing()
-    //                }
-    //            }
-    //        }
-    //    }
-    
-    func configureMessageCollectionView() {
-        
-        messagesCollectionView.messagesDataSource = self
-        messagesCollectionView.messageCellDelegate = self
-        
-        scrollsToBottomOnKeyboardBeginsEditing = true // default false
-        maintainPositionOnKeyboardFrameChanged = true // default false
-        
-        messagesCollectionView.addSubview(refreshControl)
-        //        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
-    }
-    
-    func configureMessageInputBar() {
-        messageInputBar.inputTextView.tintColor = UIColor.Appcolor
-        messageInputBar.sendButton.setTitleColor(UIColor.Appcolor, for: .normal)
-        messageInputBar.sendButton.setTitleColor(
-            UIColor.Appcolor.withAlphaComponent(0.3),
-            for: .highlighted
-        )
-    }
-    
     //MARK:- set pickers
     func setDatePicker() {
-        self.changeMessageCollectionInset = true
-        self.messageInputBar.inputTextView.resignFirstResponder()
-        
         // Create a DatePicker
         datePicker = UIDatePicker()
-        
+        datePicker?.datePickerMode = .date
         // Set some of UIDatePicker properties
         datePicker?.timeZone = NSTimeZone.local
         datePicker?.backgroundColor = UIColor.white
-        
+        datePicker?.frame = CGRect.init(x: 0, y: 2000, width: self.view.frame.width, height: (datePicker?.frame.height)!)
         // Add an event to call onDidChangeDate function when value is changed.
         datePicker?.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
-        self.messageInputBar.isHidden = true
         // Add DataPicker to the view
         self.view.addSubview(datePicker!)
         self.datePicker?.superview?.bringSubviewToFront(self.datePicker!)
-        datePicker?.translatesAutoresizingMaskIntoConstraints = false
-        self.messagesCollectionView.scrollToBottom(animated: true)
-        let leadingConstraint = NSLayoutConstraint(item: datePicker!, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
-        let triailingConstraint = NSLayoutConstraint(item: datePicker!, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
-        NSLayoutConstraint.activate([leadingConstraint, triailingConstraint])
-        
-        let safeGuide = self.view.safeAreaLayoutGuide
-        datePicker?.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor).isActive = true
+        if  !self.changeMessageCollectionInset {
+            self.viewType = .DatePicker
+            self.changeMessageCollectionInset = true
+            self.messageInputBar.inputTextView.resignFirstResponder()
+            self.messageInputBar.isHidden = true
+        }
+        if  !self.changeMessageCollectionInset {
+            self.keyboardDidHide(notification: nil)
+        }
     }
     
     func setSearchPopup(type : searchType) {
@@ -207,14 +224,18 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     }
     
     func setYesNoPopUp() {
-        let height = (self.view.frame.width  * 0.3)
-        let y = self.view.frame.height - height
-        let yesNoPopup = YesNoView.init(frame: CGRect.init(x: 0, y: y, width: self.view.frame.width, height: height))
-        self.view.addSubview(yesNoPopup)
         
-        yesNoPopup.yesButtonAction = {
-            yesNoPopup.removeFromSuperview()
+        let height = (self.view.frame.width  * 0.2)
+        let safeGuide = self.view.safeAreaLayoutGuide
+        let y = (self.view.frame.height - (height + safeGuide.layoutFrame.minY))
+        yesNoPopup = YesNoView.init(frame: CGRect.init(x: 0, y: y, width: self.view.frame.width, height: height))
+        self.view.addSubview(yesNoPopup!)
+        //MARK:- yesno option click
+        //if user chooses yes option
+        yesNoPopup!.yesButtonAction = {
+            self.yesNoPopup!.removeFromSuperview()
             if self.currentQuestion?.showList == 1 {
+                self.messageInputBar.isHidden = true
                 switch self.currentQuestion?.listType {
                 case "surgicalHistory":
                     self.setSearchPopup(type: .surgery)
@@ -233,16 +254,25 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
                 self.messageInputBar.isHidden = false
             }
         }
-        
-        yesNoPopup.noButtonAction = {
-            yesNoPopup.removeFromSuperview()
+        //if user chooses no option
+        yesNoPopup!.noButtonAction = {
+            self.yesNoPopup!.removeFromSuperview()
             self.messageInputBar.isHidden = false
         }
         
+        if  !self.changeMessageCollectionInset {
+            self.viewType = .YesNo
+            self.changeMessageCollectionInset = true
+            self.messageInputBar.inputTextView.resignFirstResponder()
+            self.messageInputBar.isHidden = true
+        }
+        if  !self.changeMessageCollectionInset {
+            self.keyboardDidHide(notification: nil)
+        }
     }
     
+    //MARK:- datepicker value selected
     @objc func datePickerValueChanged(_ sender: UIDatePicker){
-        
         // Create date formatter
         let dateFormatter: DateFormatter = DateFormatter()
         
@@ -257,15 +287,19 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         self.datePicker = nil
         self.messageInputBar.isHidden = false
         //insert selected date in message
-        let message = ChatMessage(text: selectedDate, user: botUser, messageId: getuniqueID(), date: getDate())
+        let message = ChatMessage(text: selectedDate, user: currentUser, messageId: getuniqueID(), date: getDate())
         insertMessage(message)
         //add selected date to answer dictionary
         self.userDictionary[self.currentQuestion!.key ?? "unknown"] =  selectedDate
         debugPrint("dict =", self.userDictionary)
+        //set collectionviewinset to normal
         UIView.animate(withDuration: 0.2) {
-            let collectionViewInset = self.messagesCollectionView.contentInset
-            self.messagesCollectionView.contentInset.bottom = collectionViewInset.top
-            self.messagesCollectionView.scrollToBottom(animated: true)
+            self.messagesCollectionView.contentInset.bottom = self.messageInputBar.frame.height
+        }
+        //get next question
+        if let nextIndex = self.currentQuestion?.nextQuestion?.defaultField
+        {
+            self.currentQuestion =  self.getQuestion(onIndex: nextIndex)
         }
         self.setInputMethod()
     }

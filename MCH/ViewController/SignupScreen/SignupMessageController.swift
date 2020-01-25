@@ -188,12 +188,12 @@ extension SignupMessageController : InputBarAccessoryViewDelegate {
             {
                 currentUser.lastName = component as? String ?? ""
             }
-            let user = currentUser
+            self.messagesCollectionView.scrollToBottom(animated: true)
             if let str = component as? String {
-                let message = ChatMessage(text: str, user: user, messageId: UUID().uuidString, date: Date())
+                let message = ChatMessage(text: str, user: currentUser, messageId: getuniqueID(), date: getDate())
                 insertMessage(message)
             } else if let img = component as? UIImage {
-                let message = ChatMessage(image: img, user: user, messageId: UUID().uuidString, date: Date())
+                let message = ChatMessage(image: img, user: currentUser, messageId: getuniqueID(), date: getDate())
                 insertMessage(message)
             }
         }
